@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backg2"
+    tools:context=".SingleDetail">
+
+
+    <LinearLayout
+        android:background="#90FFFFFF"
+        android:layout_marginTop="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@color/color2"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/singlePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="199.99"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@color/color1"
+                android:layout_marginStart="10dp"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note : "
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/singleBrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ค่าbts"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:layout_marginStart="10dp"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type : "
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:id="@+id/singleProductType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ค่าโดยสาร"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"/>
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date : "
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/01/2023 03:50 "
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+
+        <!--ไปยังหน้า EditExpenses-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/color6"
+            android:text="Update"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="#E91E63"
+            android:text="Back >"/>
+    </LinearLayout>
+</RelativeLayout>

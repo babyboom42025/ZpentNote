@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ZpentNote</string>
+
+
+    <string-array name="items">
+        <item>...</item>
+        <item>ประเภทหนังสือ</item>
+        <item>ประเภทการโดยสาร</item>
+        <item>ประเภทอาหาร</item>
+        <item>ประเภทการออกกำลังกาย</item>
+        <item>ประเภทความบันเทิง</item>
+        <item>ประเภทการโทรศัพท์มือถือ</item>
+        <item>ประเภทสังสรรค์</item>
+        <item>ประเภทจิปาถะ</item>
+        <item>อื่นๆ...</item>
+    </string-array>
+</resources>

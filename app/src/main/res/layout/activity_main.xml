@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/bg4"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--เป็นที่แสดงกราฟPieแสดงถึงรายจ่ายทุกตัว-->
+        <androidx.cardview.widget.CardView
+            android:backgroundTint="#70FFFFFF"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+            <com.github.mikephil.charting.charts.PieChart
+                android:backgroundTint="#70FFFFFF"
+                android:id="@+id/pieChart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+
+        <!--เป็นที่แสดงของมูลของแต่ละหมวดที่ตั้งไว้ เช่น ค่าอาหาร โดยหน้าที่แสดงวนคือ row_expenses-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyler"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="375dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="6"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--เป็นเหมือนปุมไปที่หน้าAddExpenses-->
+        <TextView
+            android:id="@+id/addIncome"
+            android:background="@color/color7"
+            android:gravity="center"
+            android:text="Add Income"
+            android:textColor="@color/white"
+            android:layout_weight="5"
+            android:padding="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!--เป็นเหมือนปุ่มไปหน้าSetting-->
+        <ImageView
+            android:background="@drawable/round_setting"
+            android:id="@+id/Setting"
+            android:src="@drawable/setting_image"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</RelativeLayout>

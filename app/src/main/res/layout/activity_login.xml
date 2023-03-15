@@ -13,7 +13,7 @@
         android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/zpn_black_tran"
         app:layout_constraintBottom_toTopOf="@+id/emailLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="300dp"
         app:boxStrokeColor="@color/color6"
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:background="#30ffffff"
             android:hint="Email"
-            android:inputType="text" />
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -84,7 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
-        app:layout_constraintVertical_bias="0.34" />
+        app:layout_constraintVertical_bias="0.3" />
 
         <!--เป็นtextที่จะเป็นเหมือนปุ่มกดไปที่หน้าForgetID-->
     <TextView
@@ -97,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtn"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.3" />
 
     <!--เป็นtextที่จะเป็นเหมือนปุ่มกดไปที่หน้าRegister-->
     <TextView
@@ -110,6 +110,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgetBtn"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintVertical_bias="0.15" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

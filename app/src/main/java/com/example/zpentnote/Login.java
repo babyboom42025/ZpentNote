@@ -61,10 +61,6 @@ public class Login extends AppCompatActivity {
                         email.setError("Please enter a Email");
                     return;
                 }
-                if (!emailLogin.equals("^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$")){
-                    email.setError("Please enter a type of Email");
-                    return;
-                }
                 if(TextUtils.isEmpty(passLogin)) {
                     pass.setError("Please enter a password.");
                     return;

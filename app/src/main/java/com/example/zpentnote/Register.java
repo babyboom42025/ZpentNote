@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
 
@@ -59,14 +62,16 @@ public class Register extends AppCompatActivity {
                     reEmail.setError("Please enter a Email.");
                     return;
                 }
-                if (!emailTxt.equals("^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$")){
-                    reEmail.setError("Please enter a type of Email");
-                    return;
-                }
                 if (TextUtils.isEmpty(passTxt)){
                     rePassword.setError("Please enter a Password.");
                     return;
                 }
+
+                if(emailTxt.isEmpty()&& Patterns.EMAIL_ADDRESS.matcher(emailTxt).matches()){
+                    reEmail.setError("Please enter type of email.");
+                    return;
+                }
+
                 if (TextUtils.isEmpty(conPassTxt)){
                     confirmPass.setError("Please confirm your password.");
                     return;
@@ -77,9 +82,6 @@ public class Register extends AppCompatActivity {
                 }
                 mDialog.setMessage("Processing...");
                 mDialog.show();
-
-
-
                 mAuth.createUserWithEmailAndPassword(emailTxt,passTxt).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -87,7 +89,7 @@ public class Register extends AppCompatActivity {
                         if(task.isSuccessful()){
                             mDialog.dismiss();
                             Toast.makeText(getApplicationContext(),"Register complete",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),Login.class));
+                            startActivity(new Intent(getApplicationContext(),Goal.class));
                         }else {
                             mDialog.dismiss();
                             Toast.makeText(getApplicationContext(),"Register error, please try again.",Toast.LENGTH_SHORT).show();

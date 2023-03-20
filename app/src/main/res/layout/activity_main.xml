@@ -58,7 +58,7 @@
         <!--เป็นเหมือนปุ่มไปหน้าSetting-->
         <ImageView
             android:background="@drawable/round_setting"
-            android:id="@+id/Setting"
+            android:id="@+id/setting"
             android:src="@drawable/setting_image"
             android:gravity="center"
             android:layout_weight="1"

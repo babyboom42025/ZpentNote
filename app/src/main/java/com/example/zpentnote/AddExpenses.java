@@ -23,7 +23,7 @@ public class AddExpenses extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -32,5 +32,7 @@ public class AddExpenses extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
+
+
     }
 }

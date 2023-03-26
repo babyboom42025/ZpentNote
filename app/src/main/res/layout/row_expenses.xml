@@ -7,7 +7,7 @@
 
     <!--อยากให้เป็นเหมือนปุมไปยังหน้าDetails-->
     <androidx.cardview.widget.CardView
-        android:id="@+id/type"
+        android:id="@+id/typeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#94ECECEC"

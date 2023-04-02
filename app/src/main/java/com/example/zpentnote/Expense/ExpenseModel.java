@@ -12,11 +12,9 @@ public class ExpenseModel implements Serializable {
     private String uid;
 
 
-    public ExpenseModel(String expenseId, String note, String category, long l, long timeInMillis, String uid) {
 
-    }
 
-    public ExpenseModel(String expenseId, String note, String category, String type, long amount, long time, String uid) {
+    public ExpenseModel(String expenseId, String note, String category, long amount, long time, String uid) {
         this.expenseId = expenseId;
         this.note = note;
         this.category = category;

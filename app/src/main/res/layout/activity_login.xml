@@ -118,7 +118,8 @@
         android:layout_height="wrap_content"
         android:text="Remember Me"
         android:textSize="15dp"
-        android:textColor="@color/white"
+
+        android:textColor="@color/color6"
         app:buttonTint = "@color/color6"
         app:layout_constraintBottom_toTopOf="@+id/loginBtn"
         app:layout_constraintEnd_toEndOf="parent"

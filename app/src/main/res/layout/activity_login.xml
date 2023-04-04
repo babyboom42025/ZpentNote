@@ -78,6 +78,7 @@
         android:layout_marginHorizontal="100dp"
         android:backgroundTint="@color/color1"
         android:text="Login"
+
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -114,18 +115,17 @@
 
     <CheckBox
         android:id="@+id/remember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="47dp"
+        android:gravity="center"
+        android:background="#60ffffff"
         android:text="Remember Me"
+        android:textColor="@color/white"
         android:textSize="15dp"
-
-        android:textColor="@color/color6"
-        app:buttonTint = "@color/color6"
+        app:buttonTint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/loginBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

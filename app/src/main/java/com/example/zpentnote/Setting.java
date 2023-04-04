@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -19,6 +21,8 @@ public class Setting extends AppCompatActivity {
     ImageView profileBtn;
 
     SwitchCompat notification;
+
+    LinearLayout logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class Setting extends AppCompatActivity {
         profileBtn=findViewById(R.id.profileBtn);
         notification=findViewById(R.id.Notification);
         aboutUs=findViewById(R.id.aboutUs);
+        logout=findViewById(R.id.logOutButton);
         editgoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +69,20 @@ public class Setting extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 startActivity(intent);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+               SharedPreferences.Editor editor = preferences.edit();
+               editor.putString("remember","false");
+               editor.apply();
+               finish();
+                startActivity(new Intent(getApplicationContext(),Login.class));
+               System.out.println("Logout");
             }
         });
 

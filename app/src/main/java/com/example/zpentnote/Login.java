@@ -11,6 +11,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,8 @@ public class Login extends AppCompatActivity {
     private TextView registerBtn;
     private ProgressDialog mDialog;
     private FirebaseAuth mAuth;
+
+    CheckBox remember;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +42,45 @@ public class Login extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         mDialog = new ProgressDialog(this);
 
+
+        SharedPreferences preferences =getSharedPreferences("checkbox",MODE_PRIVATE);
+        String checkbox = preferences.getString("remember","");
+        if (checkbox.equals("true")){
+            Intent intent = new Intent(Login.this, MainActivity.class);
+            System.out.println("check true");
+            startActivity(intent);
+        }else if (checkbox.equals("false")){
+            Toast.makeText(this,"Please Sign In",Toast.LENGTH_SHORT).show();
+            System.out.println("check false");
+        }
         loginDetails();
 
+
+
+        remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+
+
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(compoundButton.isChecked()){
+                    SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+                    SharedPreferences.Editor editor= preferences.edit();
+                    editor.putString("remember","true");
+                    editor.apply();
+                    Toast.makeText(Login.this,"Checked",Toast.LENGTH_SHORT).show();
+                    System.out.println("true");
+
+
+                }else if (!compoundButton.isChecked()){
+                    SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+                    SharedPreferences.Editor editor= preferences.edit();
+                    editor.putString("remember","false");
+                    editor.apply();
+                    Toast.makeText(Login.this,"Unchecked",Toast.LENGTH_SHORT).show();
+                    System.out.println("false");
+                }
+            }
+        });
     }
 
 
@@ -50,6 +91,9 @@ public class Login extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         forgetBtn = findViewById(R.id.forgetBtn);
         registerBtn = findViewById(R.id.registerBtn);
+        remember = findViewById(R.id.remember);
+
+
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +146,8 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent (getApplicationContext(),ForgetID.class));
             }
         });
+
+
 
     }
 }

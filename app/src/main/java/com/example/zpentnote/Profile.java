@@ -85,7 +85,6 @@ public class Profile extends AppCompatActivity {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        profileBtn.setImageURI(null);
                         Toast.makeText(Profile.this,"Upload Complete.",Toast.LENGTH_SHORT).show();
                         if(progressDialog.isShowing())
                             progressDialog.dismiss();

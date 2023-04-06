@@ -78,7 +78,6 @@
         android:layout_marginHorizontal="100dp"
         android:backgroundTint="@color/color1"
         android:text="Login"
-
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

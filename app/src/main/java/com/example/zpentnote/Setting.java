@@ -35,6 +35,7 @@ public class Setting extends AppCompatActivity {
         notification=findViewById(R.id.Notification);
         aboutUs=findViewById(R.id.aboutUs);
         logout=findViewById(R.id.logOutButton);
+
         editgoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

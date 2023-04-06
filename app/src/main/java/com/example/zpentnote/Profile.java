@@ -72,6 +72,7 @@ public class Profile extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Uploading File...");
+        progressDialog.setMessage("Processing..");
         progressDialog.show();
 
         SimpleDateFormat formatter = new SimpleDateFormat("EEEE ที่ dd เดือน MMMM พ.ศ. yyyy", new Locale("th", "TH"));

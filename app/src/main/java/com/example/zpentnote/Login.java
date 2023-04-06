@@ -1,6 +1,7 @@
 package com.example.zpentnote;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -39,6 +40,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         mAuth=FirebaseAuth.getInstance();
         mDialog = new ProgressDialog(this);
 

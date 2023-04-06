@@ -2,6 +2,7 @@ package com.example.zpentnote;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -38,6 +39,9 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         proBack =findViewById(R.id.profileBack);
         profileBtn = findViewById(R.id.setting_profile_image);
         uploadBtn = findViewById(R.id.uploadProfileBtn);

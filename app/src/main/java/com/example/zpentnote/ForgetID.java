@@ -1,6 +1,7 @@
 package com.example.zpentnote;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -31,8 +32,10 @@ public class ForgetID extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_id);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        mDialog = new ProgressDialog(this);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
+        mDialog = new ProgressDialog(this);
         forgetEmail = findViewById(R.id.forgetEmail);
         resetBtn = findViewById(R.id.ResetBtn);
         progressBar = findViewById(R.id.progressBar);

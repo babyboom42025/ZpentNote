@@ -40,7 +40,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
 
         proBack =findViewById(R.id.profileBack);
         profileBtn = findViewById(R.id.setting_profile_image);
@@ -56,7 +56,12 @@ public class Profile extends AppCompatActivity {
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadImage();
+
+                if (imageUri == null){
+                    Toast.makeText(Profile.this,"Empty Image.",Toast.LENGTH_SHORT).show();
+                }else {
+                    uploadImage();
+                }
             }
         });
 

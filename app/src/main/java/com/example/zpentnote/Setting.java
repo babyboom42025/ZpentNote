@@ -31,7 +31,7 @@ public class Setting extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
 
         editgoal=findViewById(R.id.editgoal);
         profileBtn=findViewById(R.id.profileBtn);

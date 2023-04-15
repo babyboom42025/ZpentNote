@@ -3,10 +3,16 @@ package com.example.zpentnote;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -53,12 +59,30 @@ public class Setting extends AppCompatActivity {
             }
         });
 
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("notification","notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+
         notification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
+
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
 
                 if (isChecked){
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(Setting.this,"notification");
+                    builder.setContentTitle("ZPN");
+                    builder.setContentTitle("Hello");
+                    builder.setSmallIcon(R.drawable.zpn_tran);
+                    builder.setAutoCancel(true);
+
+                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Setting.this);
+                    managerCompat.notify(1,builder.build());
+
+
                     Toast.makeText(getApplicationContext(),"Notification is ON",Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getApplicationContext(),"Notification is OFF",Toast.LENGTH_SHORT).show();

@@ -19,6 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.UUID;
@@ -41,6 +43,8 @@ public class AddExpenses extends AppCompatActivity {
         Excategory = findViewById(R.id.category);
         save = findViewById(R.id.save);
         back = findViewById(R.id.back);
+
+
 
         expenseModel=(ExpenseModel)getIntent().getSerializableExtra("Expense");
 
@@ -65,6 +69,9 @@ public class AddExpenses extends AppCompatActivity {
 
     private void createExpense() {
 
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
         Examount = findViewById(R.id.amount);
         Exnote = findViewById(R.id.note);
 
@@ -72,7 +79,7 @@ public class AddExpenses extends AppCompatActivity {
         String note = Exnote.getText().toString().trim();
         String category = Excategory.getSelectedItem().toString().trim();
         String amount = Examount.getText().toString().trim();
-
+        String time = formattedDateTime.trim();
 
 
         if (category.equals("...")) {
@@ -88,7 +95,7 @@ public class AddExpenses extends AppCompatActivity {
             return;
         }
         if (!TextUtils.isEmpty(amount)&&!category.equals("...")){
-            ExpenseModel expenseModel = new ExpenseModel(expenseId,note,category,Long.parseLong(amount),Calendar.getInstance().getTimeInMillis(),
+            ExpenseModel expenseModel = new ExpenseModel(expenseId,note,category,Long.parseLong(amount),time,
                     FirebaseAuth.getInstance().getUid());
 
             FirebaseFirestore

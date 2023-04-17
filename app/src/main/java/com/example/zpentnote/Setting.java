@@ -6,9 +6,11 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import android.app.Notification;
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -22,8 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class Setting extends AppCompatActivity {
 
@@ -47,6 +48,10 @@ public class Setting extends AppCompatActivity {
         notification=findViewById(R.id.Notification);
         aboutUs=findViewById(R.id.aboutUs);
         logout=findViewById(R.id.logOutButton);
+            setAlarm1();
+            setAlarm2();
+            setAlarm3();
+
 
         editgoal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +69,7 @@ public class Setting extends AppCompatActivity {
 
 
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            NotificationChannel channel = new NotificationChannel("notification","notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("1234","notification", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
@@ -85,7 +90,7 @@ public class Setting extends AppCompatActivity {
                     NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Setting.this);
                     managerCompat.notify(1,builder.build());
                     Toast.makeText(getApplicationContext(),"Notification is ON",Toast.LENGTH_SHORT).show();
-                    System.out.println(LocalTime.now());
+
 
                 }else {
                     Toast.makeText(getApplicationContext(),"Notification is OFF",Toast.LENGTH_SHORT).show();
@@ -120,21 +125,49 @@ public class Setting extends AppCompatActivity {
         
     }
 
-    private void settimenotification() {
-        LocalTime localTime = LocalTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        String formattedDate = localTime.format(formatter);
-        if (formattedDate == "00:50:00"){
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(Setting.this,"notification");
-            builder.setContentTitle("ZPN");
-            builder.setContentTitle("Hello");
-            builder.setSmallIcon(R.drawable.zpn_tran);
-            builder.setAutoCancel(true);
+    public void setAlarm1() {
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        PendingIntent pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent, 0);
 
-            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Setting.this);
-            managerCompat.notify(1,builder.build());
-            Toast.makeText(getApplicationContext(),"Notification is ON",Toast.LENGTH_SHORT).show();
-            System.out.println(LocalTime.now());
-        }
+        AlarmManager alarmManager1 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setTimeInMillis(System.currentTimeMillis());
+        calendar1.set(Calendar.HOUR_OF_DAY, 14);
+        calendar1.set(Calendar.MINUTE, 10);
+
+        // Set the alarm to trigger at the specified time every day
+        alarmManager1.setRepeating(AlarmManager.RTC_WAKEUP, calendar1.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent1);
+        System.out.println("1");
+    }
+    public void setAlarm2() {
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+        AlarmManager alarmManager2 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.setTimeInMillis(System.currentTimeMillis());
+        calendar2.set(Calendar.HOUR_OF_DAY, 14);
+        calendar2.set(Calendar.MINUTE, 15);
+
+        // Set the alarm to trigger at the specified time every day
+        alarmManager2.setRepeating(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent2);
+        System.out.println("2");
+    }
+    public void setAlarm3() {
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        PendingIntent pendingIntent3 = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+        AlarmManager alarmManager3 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Calendar calendar3 = Calendar.getInstance();
+        calendar3.setTimeInMillis(System.currentTimeMillis());
+        calendar3.set(Calendar.HOUR_OF_DAY, 14);
+        calendar3.set(Calendar.MINUTE, 20);
+
+        // Set the alarm to trigger at the specified time every day
+        alarmManager3.setRepeating(AlarmManager.RTC_WAKEUP, calendar3.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent3);
+        System.out.println("3");
     }
 }

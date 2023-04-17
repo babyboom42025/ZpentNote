@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
+                android:text="0"
                 android:hint="ประเภทหนังสือ"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -61,6 +62,7 @@
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
                 android:hint="ประเภทการโดยสาร"
+                android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,6 +88,7 @@
                 android:textColorHint="@color/black"
                 android:background="#30ffffff"
                 android:hint="ประเภทอาหาร"
+                android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,6 +114,7 @@
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
                 android:hint="ประเภทการออกกำลังกาย"
+                android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -136,6 +140,7 @@
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
                 android:hint="ประเภทความบันเทิง"
+                android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -161,6 +166,7 @@
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
                 android:hint="ประเภทการโทรศัพท์มือถือ"
+                android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,6 +192,7 @@
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
                 android:hint="ประเภทสังสรรค์"
+                android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -211,6 +218,7 @@
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
                 android:hint="ประเภทจิปาถะ"
+                android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -236,6 +244,7 @@
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
                 android:hint="อื่นๆ"
+                android:text="0"
                 android:inputType="number" />
 
             <!--กดเพื่อไปยังหน้าMainActivity-->
@@ -249,7 +258,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/textView"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Setup Expense Goal Per Month"

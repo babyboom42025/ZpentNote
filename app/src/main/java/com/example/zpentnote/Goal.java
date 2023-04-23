@@ -41,7 +41,6 @@ public class Goal extends AppCompatActivity {
     }
 
     private void createGoal() {
-        int num=0;
         Gtype1 = findViewById(R.id.type1);
         Gtype2 = findViewById(R.id.type2);
         Gtype3 = findViewById(R.id.type3);

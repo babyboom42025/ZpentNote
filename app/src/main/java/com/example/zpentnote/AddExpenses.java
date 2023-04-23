@@ -1,6 +1,7 @@
 package com.example.zpentnote;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -39,7 +40,8 @@ public class AddExpenses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenses);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         Excategory = findViewById(R.id.category);
         save = findViewById(R.id.save);
         back = findViewById(R.id.back);

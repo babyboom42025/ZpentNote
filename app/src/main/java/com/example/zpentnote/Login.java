@@ -41,6 +41,7 @@ public class Login extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         mAuth=FirebaseAuth.getInstance();
         mDialog = new ProgressDialog(this);

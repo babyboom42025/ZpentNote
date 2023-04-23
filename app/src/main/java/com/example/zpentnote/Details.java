@@ -17,7 +17,8 @@ public class Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
 
         SingleDe=findViewById(R.id.singleDetail);

@@ -19,7 +19,7 @@
             android:backgroundTint="#70FFFFFF"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="250dp">
+            android:layout_height="300dp">
             <com.github.mikephil.charting.charts.PieChart
                 android:backgroundTint="#70FFFFFF"
                 android:id="@+id/pieChart"
@@ -31,7 +31,7 @@
         <ScrollView
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="375dp">
+            android:layout_height="430dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

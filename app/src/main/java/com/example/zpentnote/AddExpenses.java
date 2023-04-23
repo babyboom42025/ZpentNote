@@ -41,7 +41,9 @@ public class AddExpenses extends AppCompatActivity {
         setContentView(R.layout.activity_add_expenses);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
         Excategory = findViewById(R.id.category);
         save = findViewById(R.id.save);
         back = findViewById(R.id.back);

@@ -33,7 +33,9 @@ public class ForgetID extends AppCompatActivity {
         setContentView(R.layout.activity_forget_id);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         mDialog = new ProgressDialog(this);
         forgetEmail = findViewById(R.id.forgetEmail);

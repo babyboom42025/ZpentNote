@@ -38,8 +38,9 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         mAuth=FirebaseAuth.getInstance();
         mDialog = new ProgressDialog(this);

@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     LinearLayout mType1,mType2,mType3,mType4;
 
-    CardView type;
+    
     ImageView setting;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -17,6 +17,8 @@ import com.example.zpentnote.Expense.GoalModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.UUID;
+
 public class Goal extends AppCompatActivity {
 
     EditText Gtype1,Gtype2,Gtype3,Gtype4,Gtype5,Gtype6,Gtype7,Gtype8,Gtype9;
@@ -41,6 +43,7 @@ public class Goal extends AppCompatActivity {
     }
 
     private void createGoal() {
+        String gid = UUID.randomUUID().toString();
         Gtype1 = findViewById(R.id.type1);
         Gtype2 = findViewById(R.id.type2);
         Gtype3 = findViewById(R.id.type3);
@@ -72,13 +75,13 @@ public class Goal extends AppCompatActivity {
 
         GoalModel goalModel = new GoalModel(Long.parseLong(type1),Long.parseLong(type2),Long.parseLong(type3),Long.parseLong(type4),Long.parseLong(type5),
                 Long.parseLong(type6),Long.parseLong(type7),Long.parseLong(type8),
-                Long.parseLong(type9),FirebaseAuth.getInstance().getUid());
+                Long.parseLong(type9),FirebaseAuth.getInstance().getUid(),gid);
 
 
         FirebaseFirestore
                 .getInstance()
                 .collection("Goal")
-                .document()
+                .document(gid)
                 .set(goalModel);
         finish();
         Toast.makeText(Goal.this,"SetUp Complete, Welcome.",Toast.LENGTH_SHORT).show();

@@ -6,8 +6,8 @@ public class GoalModel implements Serializable {
 
     private Long type1,type2,type3,type4,type5,type6,type7,type8,type9;
     private String gid;
-
-    public GoalModel(Long type1, Long type2, Long type3, Long type4, Long type5, Long type6, Long type7, Long type8, Long type9, String gid) {
+    private String uid;
+    public GoalModel(Long type1, Long type2, Long type3, Long type4, Long type5, Long type6, Long type7, Long type8, Long type9, String uid,String gid) {
         this.type1 = type1;
         this.type2 = type2;
         this.type3 = type3;
@@ -18,6 +18,15 @@ public class GoalModel implements Serializable {
         this.type8 = type8;
         this.type9 = type9;
         this.gid = gid;
+        this.uid = uid;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getGid() {

@@ -19,7 +19,7 @@
             android:backgroundTint="#70FFFFFF"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="250dp">
             <com.github.mikephil.charting.charts.PieChart
                 android:backgroundTint="#70FFFFFF"
                 android:id="@+id/pieChart"
@@ -27,11 +27,26 @@
                 android:layout_height="match_parent"/>
         </androidx.cardview.widget.CardView>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                    app:hintTextColor="@color/black"
+                android:hint="Select Month"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/auto_complete_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#70FFFFFF"
+                    android:inputType="none"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
         <!--เป็นที่แสดงของมูลของแต่ละหมวดที่ตั้งไว้ เช่น ค่าอาหาร -->
         <ScrollView
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="430dp">
+            android:layout_height="400dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

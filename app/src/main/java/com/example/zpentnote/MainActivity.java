@@ -12,10 +12,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +29,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -37,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout mType1,mType2,mType3,mType4;
 
     ImageView setting;
+
+    PieChart pieChart;
+
+    String[] items = {"January","February","March","April","May","June","July","August","September","October","November","December"};
+    AutoCompleteTextView autoCompleteTxt;
+    ArrayAdapter<String> adapterItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +59,17 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+        autoCompleteTxt = findViewById(R.id.auto_complete_txt);
+        adapterItems = new ArrayAdapter<String>(this,R.layout.list_item,items);
+        autoCompleteTxt.setAdapter(adapterItems);
 
+       autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               String item = parent.getItemAtPosition(position).toString();
+               Toast.makeText(getApplicationContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+           }
+       });
 
         //เพิงเพิ่มมา
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -54,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         db.collection("expenses")
                 .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category","ประเภทหนังสือ")
-                //
+                .orderBy("time", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -84,6 +107,11 @@ public class MainActivity extends AppCompatActivity {
         mType2 = findViewById(R.id.mType2);
         mType3 = findViewById(R.id.mType3);
         mType4 = findViewById(R.id.mType4);
+
+
+
+
+
         addIcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

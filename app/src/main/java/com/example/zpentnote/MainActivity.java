@@ -22,6 +22,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,20 +38,24 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView addIcome;
+    TextView addExpenses,itemPrice1;
 
     LinearLayout mType1,mType2,mType3,mType4;
 
     ImageView setting;
 
-    PieChart pieChart;
+    PieChart pieChart1;
 
     String[] items = {"January","February","March","April","May","June","July","August","September","October","November","December"};
     AutoCompleteTextView autoCompleteTxt;
+    long expense1 =0,expense2= 0;
+    long goal1 = 0,goal2 = 0;
+
     ArrayAdapter<String> adapterItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,48 +78,23 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-        //เพิงเพิ่มมา
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Datatype1();
+       // setUpGraph();
 
-        db.collection("expenses")
-                .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category","ประเภทหนังสือ")
-                .orderBy("time", Query.Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            long population = 0;
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                population += document.getLong("amount");
-                            }
-
-                            System.out.println(population);
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-
-
-
-
-
-
-        addIcome = findViewById(R.id.addIncome);
+        addExpenses = findViewById(R.id.addExpenses);
         setting = findViewById(R.id.setting);
         mType1 = findViewById(R.id.mType1);
         mType2 = findViewById(R.id.mType2);
         mType3 = findViewById(R.id.mType3);
         mType4 = findViewById(R.id.mType4);
+        pieChart1  =findViewById(R.id.typeChart1);
+        itemPrice1 = findViewById(R.id.itemPrice1);
 
 
 
 
 
-        addIcome.setOnClickListener(new View.OnClickListener() {
+        addExpenses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),AddExpenses.class));
@@ -153,4 +135,98 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void Datatype1(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("expenses")
+                .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
+                .whereEqualTo("category","ประเภทหนังสือ")
+                .orderBy("time", Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                expense1 += document.getLong("amount");
+                                String expense = Long.toString(expense1).trim();
+                                itemPrice1.setText(expense);
+                                System.out.println("Price"+itemPrice1);
+                            }
+
+                            System.out.println("expense"+expense1);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        db.collection("Goal")
+                .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                goal1 += document.getLong("type1");
+                                System.out.println("goal: "+document);
+                            }
+                            System.out.println("goal :"+goal1);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+    }
+
+    public void Datatype2(){
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("expenses")
+                .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
+                .whereEqualTo("category","ประเภทการโดยสาร")
+                .orderBy("time", Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                expense2 += document.getLong("amount");
+                            }
+
+                            System.out.println("expense"+expense2);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        db.collection("Goal")
+                .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                goal2 += document.getLong("type1");
+                                System.out.println("goal: "+document);
+                            }
+                            System.out.println("goal :"+goal2);
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
+    }
+
 }

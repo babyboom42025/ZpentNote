@@ -35,6 +35,7 @@ public class AddExpenses extends AppCompatActivity {
 
     EditText Examount,Exnote;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

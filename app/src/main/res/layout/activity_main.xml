@@ -105,7 +105,7 @@
                                     android:id="@+id/itemPrice1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="100"
+                                    android:text="0"
                                     android:textSize="28dp"
                                     android:textColor="@color/color2"
                                     android:textStyle="bold"
@@ -405,10 +405,10 @@
 
         <!--เป็นเหมือนปุมไปที่หน้าAddExpenses-->
         <TextView
-            android:id="@+id/addIncome"
+            android:id="@+id/addExpenses"
             android:background="@color/color7"
             android:gravity="center"
-            android:text="Add Income"
+            android:text="Add Expenses"
             android:textColor="@color/white"
             android:layout_weight="5"
             android:padding="15dp"

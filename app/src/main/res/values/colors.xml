@@ -16,4 +16,10 @@
     <color name="color6">#2F4858</color>
     <color name="color7">#08f26e</color>
 
+    <color name="color_def">#60FFFFFF</color>
+    <color name="color_min">#0B6623</color>
+    <color name="color_mid">#FD6A02</color>
+    <color name="color_max">#BA0900</color>
+    <color name="color_over">#81007F</color>
+
 </resources>

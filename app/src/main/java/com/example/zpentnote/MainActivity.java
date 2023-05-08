@@ -49,12 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView setting;
 
-    PieChart pieChart1;
+    PieChart pieChart;
 
     String[] items = {"January","February","March","April","May","June","July","August","September","October","November","December"};
     AutoCompleteTextView autoCompleteTxt;
     long expense1 =0,expense2= 0;
     long goal1 = 0,goal2 = 0;
+
 
     ArrayAdapter<String> adapterItems;
     @Override
@@ -79,16 +80,14 @@ public class MainActivity extends AppCompatActivity {
        });
 
         Datatype1();
-       // setUpGraph();
 
         addExpenses = findViewById(R.id.addExpenses);
         setting = findViewById(R.id.setting);
-        mType1 = findViewById(R.id.mType1);
+        pieChart  =findViewById(R.id.pieChart);
         mType2 = findViewById(R.id.mType2);
         mType3 = findViewById(R.id.mType3);
         mType4 = findViewById(R.id.mType4);
-        pieChart1  =findViewById(R.id.typeChart1);
-        itemPrice1 = findViewById(R.id.itemPrice1);
+
 
 
 
@@ -100,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),AddExpenses.class));
             }
         });
-
-
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,13 +106,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         mType1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Details.class));
             }
         });
-
         mType2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Datatype1(){
+        mType1 = findViewById(R.id.mType1);
+        itemPrice1 = findViewById(R.id.itemPrice1);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("expenses")
@@ -153,10 +153,10 @@ public class MainActivity extends AppCompatActivity {
                                 expense1 += document.getLong("amount");
                                 String expense = Long.toString(expense1).trim();
                                 itemPrice1.setText(expense);
+                                System.out.println("expense"+expense1);
                                 System.out.println("Price"+itemPrice1);
                             }
 
-                            System.out.println("expense"+expense1);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -174,12 +174,23 @@ public class MainActivity extends AppCompatActivity {
                                 goal1 += document.getLong("type1");
                                 System.out.println("goal: "+document);
                             }
-                            System.out.println("goal :"+goal1);
+                            long total = goal1-expense1;
+
+                            if(goal1==0&&expense1!=0){mType1.setBackgroundColor(R.color.color_max);}
+                            if(goal1!=0&&expense1==0){mType1.setBackgroundColor(R.color.color_min);}
+                            if(total*0.5<=goal1){mType1.setBackgroundColor(R.color.color_min);}
+                            if(total*0.7<=goal1){mType1.setBackgroundColor(R.color.color_mid);}
+                            if(total<=goal1){mType1.setBackgroundColor(R.color.color_max);}
+                            if(total>goal1){mType1.setBackgroundColor(R.color.color_over);}
+                            else {mType1.setBackgroundColor(R.color.color_def);}
+                            System.out.println("Total: " + total);
+                            System.out.println(goal1);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
+
 
     }
 

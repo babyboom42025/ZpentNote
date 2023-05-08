@@ -18,6 +18,8 @@
         <androidx.cardview.widget.CardView
             android:backgroundTint="#70FFFFFF"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="250dp">
             <com.github.mikephil.charting.charts.PieChart
@@ -31,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                    app:hintTextColor="@color/black"
+                app:hintTextColor="@color/black"
                 android:hint="Select Month"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
@@ -46,12 +48,12 @@
         <!--เป็นที่แสดงของมูลของแต่ละหมวดที่ตั้งไว้ เช่น ค่าอาหาร -->
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="400dp">
+            android:layout_height="350dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#94ECECEC"
+                android:backgroundTint="#30FFFFFF"
                 app:cardCornerRadius="3dp"
                 android:elevation="5dp">
 
@@ -63,34 +65,26 @@
 
                     <LinearLayout
                         android:id="@+id/mType1"
+                        android:background="@color/color_def"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <!--อยากให้แสดงข้อมูลกราฟของแต่ละประเภทแยกกัน-->
-                        <androidx.cardview.widget.CardView
-                            android:layout_margin="10dp"
-                            android:backgroundTint="#70FFFFFF"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp">
-                            <com.github.mikephil.charting.charts.PieChart
-                                android:backgroundTint="#70FFFFFF"
-                                android:id="@+id/typeChart1"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"/>
-                        </androidx.cardview.widget.CardView>
 
                         <LinearLayout
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="75dp"
                             android:orientation="vertical">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:layout_marginTop="10dp">
+                                android:layout_marginTop="5dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -145,35 +139,26 @@
 
                     <LinearLayout
                         android:id="@+id/mType2"
-                        android:layout_marginTop="10dp"
+                        android:background="@color/color_def"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <!--อยากให้แสดงข้อมูลกราฟของแต่ละประเภทแยกกัน-->
-                        <androidx.cardview.widget.CardView
-                            android:layout_margin="10dp"
-                            android:backgroundTint="#70FFFFFF"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp">
-                            <com.github.mikephil.charting.charts.PieChart
-                                android:backgroundTint="#70FFFFFF"
-                                android:id="@+id/typeChart2"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"/>
-                        </androidx.cardview.widget.CardView>
 
                         <LinearLayout
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="75dp"
                             android:orientation="vertical">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:layout_marginTop="10dp">
+                                android:layout_marginTop="5dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -188,7 +173,7 @@
                                     android:id="@+id/itemPrice2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="200"
+                                    android:text="0"
                                     android:textSize="28dp"
                                     android:textColor="@color/color2"
                                     android:textStyle="bold"
@@ -228,35 +213,26 @@
 
                     <LinearLayout
                         android:id="@+id/mType3"
-                        android:layout_marginTop="10dp"
+                        android:background="@color/color_def"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <!--อยากให้แสดงข้อมูลกราฟของแต่ละประเภทแยกกัน-->
-                        <androidx.cardview.widget.CardView
-                            android:layout_margin="10dp"
-                            android:backgroundTint="#70FFFFFF"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp">
-                            <com.github.mikephil.charting.charts.PieChart
-                                android:backgroundTint="#70FFFFFF"
-                                android:id="@+id/typeChart3"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"/>
-                        </androidx.cardview.widget.CardView>
 
                         <LinearLayout
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="75dp"
                             android:orientation="vertical">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:layout_marginTop="10dp">
+                                android:layout_marginTop="5dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -271,7 +247,7 @@
                                     android:id="@+id/itemPrice3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="300"
+                                    android:text="0"
                                     android:textSize="28dp"
                                     android:textColor="@color/color2"
                                     android:textStyle="bold"
@@ -311,35 +287,26 @@
 
                     <LinearLayout
                         android:id="@+id/mType4"
-                        android:layout_marginTop="10dp"
+                        android:background="@color/color_def"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <!--อยากให้แสดงข้อมูลกราฟของแต่ละประเภทแยกกัน-->
-                        <androidx.cardview.widget.CardView
-                            android:layout_margin="10dp"
-                            android:backgroundTint="#70FFFFFF"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp">
-                            <com.github.mikephil.charting.charts.PieChart
-                                android:backgroundTint="#70FFFFFF"
-                                android:id="@+id/typeChart4"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"/>
-                        </androidx.cardview.widget.CardView>
 
                         <LinearLayout
-                            android:layout_margin="10dp"
+                            android:layout_margin="5dp"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="75dp"
                             android:orientation="vertical">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:layout_marginTop="10dp">
+                                android:layout_marginTop="5dp">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -354,7 +321,7 @@
                                     android:id="@+id/itemPrice4"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="400"
+                                    android:text="0"
                                     android:textSize="28dp"
                                     android:textColor="@color/color2"
                                     android:textStyle="bold"
@@ -391,6 +358,380 @@
 
                         </LinearLayout>
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mType5"
+                        android:background="@color/color_def"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="฿"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/itemPrice5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Type : "
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="10dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="ประเภทความบันเทิง"
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mType6"
+                        android:background="@color/color_def"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="฿"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/itemPrice6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Type : "
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="10dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="ประเภทโทรศัพท์มือถือ"
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mType7"
+                        android:background="@color/color_def"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="฿"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/itemPrice7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Type : "
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="10dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="ประเภทสังสรรค์"
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mType8"
+                        android:background="@color/color_def"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="฿"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/itemPrice8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Type : "
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="10dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="ประเภทจิปาถะ"
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mType9"
+                        android:background="@color/color_def"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_margin="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="75dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="฿"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/itemPrice9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="28dp"
+                                    android:textColor="@color/color2"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Type : "
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="10dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="อื่นๆ..."
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="10dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

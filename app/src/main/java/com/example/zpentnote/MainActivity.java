@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,7 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     TextView addExpenses,itemPrice1;
 
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     long expense1 =0,expense2= 0;
     long goal1 = 0,goal2 = 0;
 
-
+    private SwipeRefreshLayout swipeRefreshLayout;
     ArrayAdapter<String> adapterItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +80,12 @@ public class MainActivity extends AppCompatActivity {
                Toast.makeText(getApplicationContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
            }
        });
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
         Datatype1();
+        System.out.println(expense1);
+        System.out.println(goal1);
 
         addExpenses = findViewById(R.id.addExpenses);
         setting = findViewById(R.id.setting);
@@ -87,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
         mType2 = findViewById(R.id.mType2);
         mType3 = findViewById(R.id.mType3);
         mType4 = findViewById(R.id.mType4);
-
-
 
 
 
@@ -133,6 +137,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onRefresh() {
+        expense1 = 0;
+        goal1 = 0;
+        System.out.println("refresh expense :"+expense1);
+        System.out.println("refresh goal :"+goal1);
+        Datatype1();
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
 
     public void Datatype1(){
         mType1 = findViewById(R.id.mType1);
@@ -174,17 +188,28 @@ public class MainActivity extends AppCompatActivity {
                                 goal1 += document.getLong("type1");
                                 System.out.println("goal: "+document);
                             }
-                            long total = goal1-expense1;
+                            if(goal1==0 && expense1!=0){
+                                System.out.println("5");
+                                mType1.setBackgroundResource(R.color.color_max);
+                            }
+                            else if(goal1!=0 && expense1==0){
+                                System.out.println("6");
+                                mType1.setBackgroundResource(R.color.color_min);
+                            }
+                            else if (expense1 <= goal1 * 0.5) {
+                                mType1.setBackgroundResource(R.color.color_min);
+                            } else if (expense1 <= goal1 * 0.7) {
+                                mType1.setBackgroundResource(R.color.color_mid);
+                            } else if (expense1 <= goal1) {
+                                mType1.setBackgroundResource(R.color.color_max);
+                            } else if (expense1 > goal1) {
+                                mType1.setBackgroundResource(R.color.color_over);
+                            } else {
+                                mType1.setBackgroundResource(R.color.color_def);
+                            }
 
-                            if(goal1==0&&expense1!=0){mType1.setBackgroundColor(R.color.color_max);}
-                            if(goal1!=0&&expense1==0){mType1.setBackgroundColor(R.color.color_min);}
-                            if(total*0.5<=goal1){mType1.setBackgroundColor(R.color.color_min);}
-                            if(total*0.7<=goal1){mType1.setBackgroundColor(R.color.color_mid);}
-                            if(total<=goal1){mType1.setBackgroundColor(R.color.color_max);}
-                            if(total>goal1){mType1.setBackgroundColor(R.color.color_over);}
-                            else {mType1.setBackgroundColor(R.color.color_def);}
-                            System.out.println("Total: " + total);
-                            System.out.println(goal1);
+                            System.out.println("goal "+goal1);
+                            System.out.println("expense "+expense1);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -194,50 +219,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void Datatype2(){
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("expenses")
-                .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category","ประเภทการโดยสาร")
-                .orderBy("time", Query.Direction.DESCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                expense2 += document.getLong("amount");
-                            }
-
-                            System.out.println("expense"+expense2);
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-        db.collection("Goal")
-                .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                goal2 += document.getLong("type1");
-                                System.out.println("goal: "+document);
-                            }
-                            System.out.println("goal :"+goal2);
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-
-
-    }
 
 }

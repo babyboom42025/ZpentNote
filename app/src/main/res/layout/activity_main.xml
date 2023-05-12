@@ -19,7 +19,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <!--เป็นที่แสดงกราฟPieแสดงถึงรายจ่ายทุกตัว-->
             <androidx.cardview.widget.CardView
                 android:backgroundTint="#70FFFFFF"
@@ -53,6 +52,7 @@
 
             <!--เป็นที่แสดงของมูลของแต่ละหมวดที่ตั้งไว้ เช่น ค่าอาหาร -->
             <ScrollView
+                android:id="@+id/ScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="350dp">
 

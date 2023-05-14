@@ -36,9 +36,6 @@
             android:name=".Setting"
             android:exported="false" />
         <activity
-            android:name=".SingleDetail"
-            android:exported="false" />
-        <activity
             android:name=".EditExpenses"
             android:exported="false" />
         <activity

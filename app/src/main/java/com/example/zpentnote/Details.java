@@ -26,6 +26,7 @@ import java.util.List;
 
 public class Details extends AppCompatActivity {
 
+    RelativeLayout rowDetail;
     RecyclerView review;
     ArrayList<ExpenseModel> datalist;
     FirebaseFirestore db;
@@ -40,7 +41,7 @@ public class Details extends AppCompatActivity {
             actionBar.hide();
         }
 
-
+        rowDetail= findViewById(R.id.rowDetail);
         review=findViewById(R.id.review);
         review.setLayoutManager (new LinearLayoutManager(this));
         datalist=new ArrayList<>();
@@ -48,7 +49,6 @@ public class Details extends AppCompatActivity {
         review.setAdapter(adapter);
         db=FirebaseFirestore.getInstance();
         ConDetail();
-
 
     }
 

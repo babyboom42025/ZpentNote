@@ -8,7 +8,7 @@
     android:layout_margin="5dp">
     <RelativeLayout
         android:backgroundTint="#40ffffff"
-        android:id="@+id/singleDetail"
+        android:id="@+id/rowDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout

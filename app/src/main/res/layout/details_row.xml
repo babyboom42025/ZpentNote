@@ -4,8 +4,10 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:contentPadding="10dp"
+    android:backgroundTint="#40ffffff"
     android:layout_margin="5dp">
     <RelativeLayout
+        android:backgroundTint="#40ffffff"
         android:id="@+id/singleDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,16 +20,23 @@
 
             <!--ชื่อที่ใช้แสดง เช่น ค่าbts-->
             <TextView
-                android:id="@+id/detailsNote"
+                android:id="@+id/note"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:text="ค่าbts"
+                android:textSize="20sp"
+                android:text="-"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/category"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:text="ค่าโดยสาร"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/time"
+                android:textSize="18sp"
+                android:text="10/10/10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -40,14 +49,14 @@
             <TextView
                 android:id="@+id/amount"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 android:textColor="@color/color7"
                 android:text="100"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textColor="@color/color7"
                 android:text=" BTH"
                 android:layout_width="wrap_content"

@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             actionBar.hide();
         }
         autoCompleteTxt = findViewById(R.id.auto_complete_txt);
-        adapterItems = new ArrayAdapter<String>(this,R.layout.list_item,items);
+        adapterItems = new ArrayAdapter<String>(this,R.layout.details_row,items);
         autoCompleteTxt.setAdapter(adapterItems);
 
        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         Datatype7();
         Datatype8();
         Datatype9();
+        setUpGraph();
         System.out.println(expense1);
         System.out.println(goal1);
 
@@ -108,10 +109,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         mType7 = findViewById(R.id.mType7);
         mType8 = findViewById(R.id.mType8);
         mType9 = findViewById(R.id.mType9);
-
         scrollView =findViewById(R.id.ScrollView);
 
-
+        System.out.println("Data in graph"+expense1);
 
 
         addExpenses.setOnClickListener(new View.OnClickListener() {
@@ -132,28 +132,146 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         mType1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Details.class));
+                String dataToSend = "type1";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                startActivity(intent);
             }
         });
         mType2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Details.class));
+                String dataToSend = "type2";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                startActivity(intent);
             }
         });
         mType3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Details.class));
+                String dataToSend = "type3";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                startActivity(intent);
             }
         });
         mType4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Details.class));
+                String dataToSend = "type4";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                startActivity(intent);
+            }
+        });
+
+        mType5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type5";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                startActivity(intent);
+            }
+        });
+
+        mType6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type6";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                startActivity(intent);
+            }
+        });
+
+        mType7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type7";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                startActivity(intent);
+            }
+        });
+
+        mType8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type8";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                startActivity(intent);
+            }
+        });
+
+        mType9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type9";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                startActivity(intent);
             }
         });
     }
+
+
+    private void setUpGraph() {
+        List<PieEntry> pieEntryList=new ArrayList<>();
+        List<Integer> colorsList=new ArrayList<>();
+        if (expense1!=0){
+            pieEntryList.add(new PieEntry(expense1,"type1"));
+            colorsList.add(getResources().getColor(R.color.color1));
+        }
+        if (expense2!=0){
+            pieEntryList.add(new PieEntry(expense2,"type2"));
+            colorsList.add(getResources().getColor(R.color.color2));
+        }
+        if (expense3!=0){
+            pieEntryList.add(new PieEntry(expense3,"type3"));
+            colorsList.add(getResources().getColor(R.color.color3));
+        }
+        if (expense4!=0){
+            pieEntryList.add(new PieEntry(expense4,"type4"));
+            colorsList.add(getResources().getColor(R.color.color4));
+        }
+        if (expense5!=0){
+            pieEntryList.add(new PieEntry(expense5,"type5"));
+            colorsList.add(getResources().getColor(R.color.color5));
+        }
+        if (expense6!=0){
+            pieEntryList.add(new PieEntry(expense6,"type6"));
+            colorsList.add(getResources().getColor(R.color.color6));
+        }
+        if (expense7!=0){
+            pieEntryList.add(new PieEntry(expense7,"type7"));
+            colorsList.add(getResources().getColor(R.color.color7));
+        }
+        if (expense8!=0){
+            pieEntryList.add(new PieEntry(expense8,"type8"));
+            colorsList.add(getResources().getColor(R.color.color_min));
+        }
+        if (expense9!=0){
+            pieEntryList.add(new PieEntry(expense9,"type9"));
+            colorsList.add(getResources().getColor(R.color.color_max));
+        }
+        PieDataSet pieDataSet=new PieDataSet(pieEntryList,String.valueOf
+                (expense1-expense2-expense3-expense4-expense5-expense6-expense7-expense8-expense9));
+        pieDataSet.setColors(colorsList);
+        pieDataSet.setValueTextColor(getResources().getColor(R.color.white));
+        PieData pieDat = new PieData(pieDataSet);
+
+        if (pieChart != null) {
+            pieChart.setData(pieDat);
+            pieChart.invalidate();
+            pieChart.setEnabled(true);
+            System.out.println("Data in graph"+expense1);
+        }
+
+    }
+
     @Override
     public void onRefresh() {
         expense1 = 0;

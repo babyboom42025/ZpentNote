@@ -22,6 +22,9 @@ public class ExpenseModel implements Serializable {
         this.time = time;
         this.uid = uid;
     }
+    public ExpenseModel(){
+
+    }
 
     public String getExpenseId() {
         return expenseId;

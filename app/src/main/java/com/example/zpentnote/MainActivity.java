@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             actionBar.hide();
         }
         autoCompleteTxt = findViewById(R.id.auto_complete_txt);
-        adapterItems = new ArrayAdapter<String>(this,R.layout.details_row,items);
+        adapterItems = new ArrayAdapter<String>(this,R.layout.list_item,items);
         autoCompleteTxt.setAdapter(adapterItems);
 
        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,8 +95,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         Datatype8();
         Datatype9();
         setUpGraph();
-        System.out.println(expense1);
-        System.out.println(goal1);
 
         addExpenses = findViewById(R.id.addExpenses);
         setting = findViewById(R.id.setting);

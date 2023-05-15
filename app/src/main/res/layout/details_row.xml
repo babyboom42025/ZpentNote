@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:contentPadding="10dp"
-    android:backgroundTint="#40ffffff"
+    android:backgroundTint="#80ffffff"
     android:layout_margin="5dp">
     <RelativeLayout
         android:backgroundTint="#40ffffff"

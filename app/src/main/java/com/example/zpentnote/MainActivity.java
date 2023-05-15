@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     PieChart pieChart;
     ScrollView scrollView;
-
+    String selectmonth="";
     String[] items = {"January","February","March","April","May","June","July","August","September","October","November","December"};
     AutoCompleteTextView autoCompleteTxt;
     long expense1 =0,expense2= 0,expense3= 0,expense4= 0,expense5= 0,expense6= 0,expense7= 0,expense8= 0,expense9= 0;
@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               String item = parent.getItemAtPosition(position).toString();
-               Toast.makeText(getApplicationContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+               selectmonth = parent.getItemAtPosition(position).toString();
+               Toast.makeText(getApplicationContext(),"Item: "+selectmonth,Toast.LENGTH_SHORT).show();
            }
        });
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
@@ -95,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         Datatype8();
         Datatype9();
         setUpGraph();
+        System.out.println(expense1);
+        System.out.println(goal1);
 
         addExpenses = findViewById(R.id.addExpenses);
         setting = findViewById(R.id.setting);
@@ -329,8 +331,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         }
                     }
                 });
-
-
     }
 
 

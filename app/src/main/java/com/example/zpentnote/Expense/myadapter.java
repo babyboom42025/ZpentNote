@@ -32,14 +32,23 @@ public class myadapter extends RecyclerView.Adapter<myadapter.myviewholder>
 
     @Override
     public void onBindViewHolder(@NonNull myviewholder holder, int position) {
+        ExpenseModel expense = datalist.get(position);
         holder.note.setText(datalist.get(position).getNote());
         holder.category.setText(datalist.get(position).getCategory());
         holder.time.setText(datalist.get(position).getTime());
         holder.amount.setText(String.valueOf(datalist.get(position).getAmount()));
+        final String uid = datalist.get(position).getUid();
+        final String expenseId = datalist.get(position).getExpenseId();
         holder.rowDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), EditExpenses.class);
+                intent.putExtra("expenseId",expenseId);
+                intent.putExtra("uid", uid);
+                intent.putExtra("note", expense.getNote());
+                intent.putExtra("category", expense.getCategory());
+                intent.putExtra("amount", expense.getAmount());
+
                 view.getContext().startActivity(intent);
             }
         });

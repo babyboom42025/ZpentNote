@@ -86,7 +86,7 @@ public class Profile extends AppCompatActivity {
 
         SimpleDateFormat formatter = new SimpleDateFormat("EEEE ที่ dd เดือน MMMM พ.ศ. yyyy", new Locale("th", "TH"));
         Date now =new Date();
-        String fileName = formatter.format(now);
+        String fileName ="profile";
         storageReference = FirebaseStorage.getInstance().getReference("images/"+fileName);
 
         storageReference.putFile(imageUri)

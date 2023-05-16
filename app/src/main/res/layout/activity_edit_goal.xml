@@ -255,7 +255,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/edtupdate"
+                    android:id="@+id/goalupdate"
                     android:background="@drawable/update"
                     android:gravity="center"
                     android:text="Update"
@@ -267,7 +267,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/edtdelete"
+                    android:id="@+id/goaldelete"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/delete"
@@ -282,7 +282,7 @@
                 <TextView
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="10dp"
-                    android:id="@+id/edtback"
+                    android:id="@+id/goalback"
                     android:background="@drawable/back"
                     android:gravity="center"
                     android:text="Back"

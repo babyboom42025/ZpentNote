@@ -23,6 +23,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+
+import com.bumptech.glide.Glide;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Calendar;
 
@@ -31,74 +41,51 @@ public class Setting extends AppCompatActivity {
     RelativeLayout editgoal,aboutUs;
     ImageView profileBtn;
 
-    SwitchCompat notification;
+    SwitchCompat notificationSwitch;
 
+    FirebaseFirestore db;
     LinearLayout logout;
+
+    FirebaseStorage storage;
+    StorageReference storageRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
         }
 
-        editgoal=findViewById(R.id.editgoal);
-        profileBtn=findViewById(R.id.profileBtn);
-        notification=findViewById(R.id.Notification);
-        aboutUs=findViewById(R.id.aboutUs);
-        logout=findViewById(R.id.logOutButton);
-            setAlarm1();
-            setAlarm2();
-            setAlarm3();
-
+        editgoal = findViewById(R.id.editgoal);
+        profileBtn = findViewById(R.id.profileBtn);
+        notificationSwitch = findViewById(R.id.Notification);
+        aboutUs = findViewById(R.id.aboutUs);
+        logout = findViewById(R.id.logOutButton);
 
         editgoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Goal.class));
+                startActivity(new Intent(getApplicationContext(), EditGoal.class));
             }
         });
 
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Profile.class));
+                startActivity(new Intent(getApplicationContext(), Profile.class));
             }
         });
 
 
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            NotificationChannel channel = new NotificationChannel("1234","notification", NotificationManager.IMPORTANCE_DEFAULT);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("1234", "notification", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
-
-
-        notification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                if (isChecked){
-                    NotificationCompat.Builder builder = new NotificationCompat.Builder(Setting.this,"notification");
-                    builder.setContentTitle("ZPN");
-                    builder.setContentTitle("Hello");
-                    builder.setSmallIcon(R.drawable.zpn_tran);
-                    builder.setAutoCancel(true);
-
-                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Setting.this);
-                    managerCompat.notify(1,builder.build());
-                    Toast.makeText(getApplicationContext(),"Notification is ON",Toast.LENGTH_SHORT).show();
-
-
-                }else {
-                    Toast.makeText(getApplicationContext(),"Notification is OFF",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
         aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,62 +101,67 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
-               SharedPreferences.Editor editor = preferences.edit();
-               editor.putString("remember","false");
-               editor.apply();
-               finish();
-                startActivity(new Intent(getApplicationContext(),Login.class));
-               System.out.println("Logout");
+                SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("remember", "false");
+                editor.apply();
+                finish();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                System.out.println("Logout");
             }
         });
 
-        
+        notificationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // The notification switch is turned on
+                    // Set up the notification schedule for 12:00 and 18:00
+                    setNotificationSchedule(true);
+                } else {
+                    // The notification switch is turned off
+                    // Cancel the notification schedule
+                    setNotificationSchedule(false);
+                }
+            }
+        });
+
     }
 
-    public void setAlarm1() {
+    private void setNotificationSchedule(boolean isEnabled) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, NotificationReceiver.class);
-        PendingIntent pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent, 0);
+        intent.putExtra("isNotificationOn", isEnabled);
+        intent.putExtra("showAt12PM", isEnabled);
+        intent.putExtra("showAt6PM", isEnabled);
 
-        AlarmManager alarmManager1 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        PendingIntent pendingIntent12PM = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent6PM = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Calendar calendar1 = Calendar.getInstance();
-        calendar1.setTimeInMillis(System.currentTimeMillis());
-        calendar1.set(Calendar.HOUR_OF_DAY, 14);
-        calendar1.set(Calendar.MINUTE, 10);
+        Calendar calendar12PM = Calendar.getInstance();
+        calendar12PM.set(Calendar.HOUR_OF_DAY, 12);
+        calendar12PM.set(Calendar.MINUTE, 0);
+        calendar12PM.set(Calendar.SECOND, 0);
 
-        // Set the alarm to trigger at the specified time every day
-        alarmManager1.setRepeating(AlarmManager.RTC_WAKEUP, calendar1.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent1);
-        System.out.println("1");
+        Calendar calendar6PM = Calendar.getInstance();
+        calendar6PM.set(Calendar.HOUR_OF_DAY, 18);
+        calendar6PM.set(Calendar.MINUTE, 0);
+        calendar6PM.set(Calendar.SECOND, 0);
+
+        if (isEnabled) {
+            // Schedule the notification at 12:00 PM
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar12PM.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent12PM);
+
+            // Schedule the notification at 6:00 PM
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar6PM.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent6PM);
+        } else {
+            // Cancel the notification schedules
+            alarmManager.cancel(pendingIntent12PM);
+            alarmManager.cancel(pendingIntent6PM);
+        }
     }
-    public void setAlarm2() {
-        Intent intent = new Intent(this, NotificationReceiver.class);
-        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent, 0);
 
-        AlarmManager alarmManager2 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-        Calendar calendar2 = Calendar.getInstance();
-        calendar2.setTimeInMillis(System.currentTimeMillis());
-        calendar2.set(Calendar.HOUR_OF_DAY, 14);
-        calendar2.set(Calendar.MINUTE, 15);
-
-        // Set the alarm to trigger at the specified time every day
-        alarmManager2.setRepeating(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent2);
-        System.out.println("2");
-    }
-    public void setAlarm3() {
-        Intent intent = new Intent(this, NotificationReceiver.class);
-        PendingIntent pendingIntent3 = PendingIntent.getBroadcast(this, 0, intent, 0);
-
-        AlarmManager alarmManager3 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        Calendar calendar3 = Calendar.getInstance();
-        calendar3.setTimeInMillis(System.currentTimeMillis());
-        calendar3.set(Calendar.HOUR_OF_DAY, 14);
-        calendar3.set(Calendar.MINUTE, 20);
-
-        // Set the alarm to trigger at the specified time every day
-        alarmManager3.setRepeating(AlarmManager.RTC_WAKEUP, calendar3.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent3);
-        System.out.println("3");
-    }
 }

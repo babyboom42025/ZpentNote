@@ -95,12 +95,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         Datatype8();
         Datatype9();
         setUpGraph();
-        System.out.println(expense1);
-        System.out.println(goal1);
 
         addExpenses = findViewById(R.id.addExpenses);
         setting = findViewById(R.id.setting);
-        pieChart  =findViewById(R.id.pieChart);
         mType2 = findViewById(R.id.mType2);
         mType3 = findViewById(R.id.mType3);
         mType4 = findViewById(R.id.mType4);
@@ -219,56 +216,31 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     private void setUpGraph() {
-        List<PieEntry> pieEntryList=new ArrayList<>();
-        List<Integer> colorsList=new ArrayList<>();
-        if (expense1!=0){
-            pieEntryList.add(new PieEntry(expense1,"type1"));
-            colorsList.add(getResources().getColor(R.color.color1));
-        }
-        if (expense2!=0){
-            pieEntryList.add(new PieEntry(expense2,"type2"));
-            colorsList.add(getResources().getColor(R.color.color2));
-        }
-        if (expense3!=0){
-            pieEntryList.add(new PieEntry(expense3,"type3"));
-            colorsList.add(getResources().getColor(R.color.color3));
-        }
-        if (expense4!=0){
-            pieEntryList.add(new PieEntry(expense4,"type4"));
-            colorsList.add(getResources().getColor(R.color.color4));
-        }
-        if (expense5!=0){
-            pieEntryList.add(new PieEntry(expense5,"type5"));
-            colorsList.add(getResources().getColor(R.color.color5));
-        }
-        if (expense6!=0){
-            pieEntryList.add(new PieEntry(expense6,"type6"));
-            colorsList.add(getResources().getColor(R.color.color6));
-        }
-        if (expense7!=0){
-            pieEntryList.add(new PieEntry(expense7,"type7"));
-            colorsList.add(getResources().getColor(R.color.color7));
-        }
-        if (expense8!=0){
-            pieEntryList.add(new PieEntry(expense8,"type8"));
-            colorsList.add(getResources().getColor(R.color.color_min));
-        }
-        if (expense9!=0){
-            pieEntryList.add(new PieEntry(expense9,"type9"));
-            colorsList.add(getResources().getColor(R.color.color_max));
-        }
-        PieDataSet pieDataSet=new PieDataSet(pieEntryList,String.valueOf
-                (expense1-expense2-expense3-expense4-expense5-expense6-expense7-expense8-expense9));
-        pieDataSet.setColors(colorsList);
-        pieDataSet.setValueTextColor(getResources().getColor(R.color.white));
-        PieData pieDat = new PieData(pieDataSet);
+        PieChart pieChart = findViewById(R.id.pieChart); // Replace with your PieChart view ID
 
-        if (pieChart != null) {
-            pieChart.setData(pieDat);
-            pieChart.invalidate();
-            pieChart.setEnabled(true);
-            System.out.println("Data in graph"+expense1);
-        }
+        List<PieEntry> entries = new ArrayList<>();
+        entries.add(new PieEntry(expense1, "Type 1"));
+        entries.add(new PieEntry(expense2, "Type 2"));
+        entries.add(new PieEntry(expense3, "Type 3"));
+        entries.add(new PieEntry(expense4, "Type 4"));
+
+        PieDataSet dataSet = new PieDataSet(entries, "Expense Types");
+
+        // Add colors to the dataset
+        List<Integer> colors = new ArrayList<>();
+        colors.add(ContextCompat.getColor(this, R.color.color1)); // Replace with your color resource
+        colors.add(ContextCompat.getColor(this, R.color.color2));
+        colors.add(ContextCompat.getColor(this, R.color.color3));
+        colors.add(ContextCompat.getColor(this, R.color.color4));
+        dataSet.setColors(colors);
+
+        PieData pieData = new PieData(dataSet);
+
+        pieChart.setData(pieData);
+        pieChart.setUsePercentValues(true);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.invalidate();
+
 
     }
 
@@ -303,8 +275,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 expense1 += document.getLong("amount");
                                 String expense = Long.toString(expense1).trim();
                                 itemPrice1.setText(expense);
-                                System.out.println("expense"+expense1);
-                                System.out.println("Price"+itemPrice1);
+
                             }
 
                         } else {
@@ -324,37 +295,13 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 goal1 += document.getLong("type1");
                                 System.out.println("goal: "+document);}
                             updateColor1(expense1, goal1);
-                            System.out.println("goal "+goal1);
-                            System.out.println("expense "+expense1);
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
     }
-
-
-    private void updateColor1(long expense1, long goal1) {
-        if (goal1 == 0 && expense1 != 0) {
-            System.out.println("5");
-            mType1.setBackgroundResource(R.color.color_max);
-        } else if (goal1 != 0 && expense1 == 0) {
-            System.out.println("6");
-            mType1.setBackgroundResource(R.color.color_min);
-        } else if (expense1 <= goal1 * 0.5) {
-            mType1.setBackgroundResource(R.color.color_min);
-        } else if (expense1 <= goal1 * 0.7) {
-            mType1.setBackgroundResource(R.color.color_mid);
-        } else if (expense1 <= goal1) {
-            mType1.setBackgroundResource(R.color.color_max);
-        } else if (expense1 > goal1) {
-            mType1.setBackgroundResource(R.color.color_over);
-        } else {
-            mType1.setBackgroundResource(R.color.color_def);
-        }
-        System.out.println("expense " + expense1);
-    }
-
 
     public void Datatype2(){
         mType2 = findViewById(R.id.mType2);
@@ -375,8 +322,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 expense2 += document.getLong("amount");
                                 String expenseT2 = Long.toString(expense2).trim();
                                 itemPrice2.setText(expenseT2);
-                                System.out.println("expense type2 "+expense2);
-                                System.out.println("Price type2 "+itemPrice2);
+
                             }
 
                         } else {
@@ -416,8 +362,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 mType2.setBackgroundResource(R.color.color_def);
                             }
 
-                            System.out.println("goal2 "+goal2);
-                            System.out.println("expense2 "+expense2);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -447,8 +391,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 expense3 += document.getLong("amount");
                                 String expenseT3 = Long.toString(expense3).trim();
                                 itemPrice3.setText(expenseT3);
-                                System.out.println("expense type2 "+expense3);
-                                System.out.println("Price type2 "+itemPrice3);
+
                             }
 
                         } else {
@@ -488,8 +431,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 mType3.setBackgroundResource(R.color.color_def);
                             }
 
-                            System.out.println("goal3 "+goal3);
-                            System.out.println("expense3 "+expense3);
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -519,8 +461,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 expense4 += document.getLong("amount");
                                 String expenseT4 = Long.toString(expense4).trim();
                                 itemPrice4.setText(expenseT4);
-                                System.out.println("expense type4 "+expense4);
-                                System.out.println("Price type4 "+itemPrice4);
                             }
 
                         } else {
@@ -560,8 +500,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 mType4.setBackgroundResource(R.color.color_def);
                             }
 
-                            System.out.println("goal4 "+goal4);
-                            System.out.println("expense4 "+expense4);
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -590,8 +529,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 expense5 += document.getLong("amount");
                                 String expenseT5 = Long.toString(expense5).trim();
                                 itemPrice5.setText(expenseT5);
-                                System.out.println("expense type5 "+expense5);
-                                System.out.println("Price type5 "+itemPrice5);
+
                             }
 
                         } else {
@@ -631,8 +569,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 mType5.setBackgroundResource(R.color.color_def);
                             }
 
-                            System.out.println("goal5 "+goal5);
-                            System.out.println("expense5 "+expense5);
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -662,8 +599,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 expense6 += document.getLong("amount");
                                 String expenseT6 = Long.toString(expense6).trim();
                                 itemPrice6.setText(expenseT6);
-                                System.out.println("expense type6 "+expense6);
-                                System.out.println("Price type6 "+itemPrice6);
+
                             }
 
                         } else {
@@ -703,8 +639,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 mType6.setBackgroundResource(R.color.color_def);
                             }
 
-                            System.out.println("goal6 "+goal6);
-                            System.out.println("expense6 "+expense6);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -734,8 +668,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 expense7 += document.getLong("amount");
                                 String expenseT7 = Long.toString(expense7).trim();
                                 itemPrice7.setText(expenseT7);
-                                System.out.println("expense type7 "+expense7);
-                                System.out.println("Price type7 "+itemPrice7);
+
                             }
 
                         } else {
@@ -775,8 +708,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 mType7.setBackgroundResource(R.color.color_def);
                             }
 
-                            System.out.println("goal7 "+goal7);
-                            System.out.println("expense7 "+expense7);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -806,8 +737,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 expense8 += document.getLong("amount");
                                 String expenseT8 = Long.toString(expense8).trim();
                                 itemPrice8.setText(expenseT8);
-                                System.out.println("expense type8 "+expense8);
-                                System.out.println("Price type8 "+itemPrice8);
+
                             }
 
                         } else {
@@ -847,8 +777,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 mType8.setBackgroundResource(R.color.color_def);
                             }
 
-                            System.out.println("goal8 "+goal8);
-                            System.out.println("expense8 "+expense8);
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -878,8 +806,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 expense9 += document.getLong("amount");
                                 String expenseT9 = Long.toString(expense9).trim();
                                 itemPrice9.setText(expenseT9);
-                                System.out.println("expense type9 "+expense9);
-                                System.out.println("Price type9 "+itemPrice9);
                             }
 
                         } else {
@@ -919,8 +845,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 mType9.setBackgroundResource(R.color.color_def);
                             }
 
-                            System.out.println("goal9 "+goal9);
-                            System.out.println("expense9"+expense9);
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -930,4 +855,25 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     }
 
+
+    public void updateColor1(long expense1, long goal1) {
+        if (goal1 == 0 && expense1 != 0) {
+            System.out.println("5");
+            mType1.setBackgroundResource(R.color.color_max);
+        } else if (goal1 != 0 && expense1 == 0) {
+            System.out.println("6");
+            mType1.setBackgroundResource(R.color.color_min);
+        } else if (expense1 <= goal1 * 0.5) {
+            mType1.setBackgroundResource(R.color.color_min);
+        } else if (expense1 <= goal1 * 0.7) {
+            mType1.setBackgroundResource(R.color.color_mid);
+        } else if (expense1 <= goal1) {
+            mType1.setBackgroundResource(R.color.color_max);
+        } else if (expense1 > goal1) {
+            mType1.setBackgroundResource(R.color.color_over);
+        } else {
+            mType1.setBackgroundResource(R.color.color_def);
+        }
+        System.out.println("expense " + expense1);
+    }
 }

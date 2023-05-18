@@ -72,6 +72,7 @@ public class EditGoal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Setting.class));
+                finish();
             }
         });
 
@@ -118,6 +119,7 @@ public class EditGoal extends AppCompatActivity {
                         }
                     }
                 });
+        finish();
     }
 
     private void UpdateGoalData() {
@@ -162,6 +164,7 @@ public class EditGoal extends AppCompatActivity {
                         }
                     }
                 });
+        finish();
     }
 
     private void showGoalData() {

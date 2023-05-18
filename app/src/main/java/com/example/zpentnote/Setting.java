@@ -31,6 +31,7 @@ import android.content.Intent;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -115,53 +116,19 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    // The notification switch is turned on
-                    // Set up the notification schedule for 12:00 and 18:00
-                    setNotificationSchedule(true);
+                    Toast.makeText(getApplicationContext(),"Notification On",Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().subscribeToTopic("notifications");
+
                 } else {
-                    // The notification switch is turned off
-                    // Cancel the notification schedule
-                    setNotificationSchedule(false);
+                    Toast.makeText(getApplicationContext(),"Notification Off",Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("notifications");
                 }
             }
         });
 
     }
 
-    private void setNotificationSchedule(boolean isEnabled) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, NotificationReceiver.class);
-        intent.putExtra("isNotificationOn", isEnabled);
-        intent.putExtra("showAt12PM", isEnabled);
-        intent.putExtra("showAt6PM", isEnabled);
 
-        PendingIntent pendingIntent12PM = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent pendingIntent6PM = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        Calendar calendar12PM = Calendar.getInstance();
-        calendar12PM.set(Calendar.HOUR_OF_DAY, 12);
-        calendar12PM.set(Calendar.MINUTE, 0);
-        calendar12PM.set(Calendar.SECOND, 0);
-
-        Calendar calendar6PM = Calendar.getInstance();
-        calendar6PM.set(Calendar.HOUR_OF_DAY, 18);
-        calendar6PM.set(Calendar.MINUTE, 0);
-        calendar6PM.set(Calendar.SECOND, 0);
-
-        if (isEnabled) {
-            // Schedule the notification at 12:00 PM
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar12PM.getTimeInMillis(),
-                    AlarmManager.INTERVAL_DAY, pendingIntent12PM);
-
-            // Schedule the notification at 6:00 PM
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar6PM.getTimeInMillis(),
-                    AlarmManager.INTERVAL_DAY, pendingIntent6PM);
-        } else {
-            // Cancel the notification schedules
-            alarmManager.cancel(pendingIntent12PM);
-            alarmManager.cancel(pendingIntent6PM);
-        }
-    }
 
 
 }

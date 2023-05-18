@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         Datatype7();
         Datatype8();
         Datatype9();
-        setUpGraph();
 
         addExpenses = findViewById(R.id.addExpenses);
         setting = findViewById(R.id.setting);
@@ -216,40 +215,30 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     private void setUpGraph() {
-        PieChart pieChart = findViewById(R.id.pieChart); // Replace with your PieChart view ID
+        if (pieChart != null) {
+        List<PieEntry> pieEntryList = new ArrayList<>();
+        List<Integer> colorsList = new ArrayList<>();
+        if (expense1 != 0) {
+            pieEntryList.add(new PieEntry(expense1, "Type1"));
+            colorsList.add(getResources().getColor(R.color.color1));
+        }
+        // Add other expense types here
 
-        List<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(expense1, "Type 1"));
-        entries.add(new PieEntry(expense2, "Type 2"));
-        entries.add(new PieEntry(expense3, "Type 3"));
-        entries.add(new PieEntry(expense4, "Type 4"));
-
-        PieDataSet dataSet = new PieDataSet(entries, "Expense Types");
-
-        // Add colors to the dataset
-        List<Integer> colors = new ArrayList<>();
-        colors.add(ContextCompat.getColor(this, R.color.color1)); // Replace with your color resource
-        colors.add(ContextCompat.getColor(this, R.color.color2));
-        colors.add(ContextCompat.getColor(this, R.color.color3));
-        colors.add(ContextCompat.getColor(this, R.color.color4));
-        dataSet.setColors(colors);
-
-        PieData pieData = new PieData(dataSet);
+        PieDataSet pieDataSet = new PieDataSet(pieEntryList, "");
+        pieDataSet.setColors(colorsList);
+        pieDataSet.setValueTextColor(getResources().getColor(R.color.white));
+        PieData pieData = new PieData(pieDataSet);
 
         pieChart.setData(pieData);
-        pieChart.setUsePercentValues(true);
-        pieChart.getDescription().setEnabled(false);
         pieChart.invalidate();
-
-
+        } else {
+            // Handle the case when pieChart is null
+            Log.e(TAG, "PieChart view is null");
+        }
     }
 
     @Override
     public void onRefresh() {
-        expense1 = 0;
-        goal1 = 0;
-        System.out.println("refresh expense :"+expense1);
-        System.out.println("refresh goal :"+goal1);
         scrollView.smoothScrollTo(0, 0);
         swipeRefreshLayout.setRefreshing(false);
     }
@@ -273,11 +262,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 expense1 += document.getLong("amount");
-                                String expense = Long.toString(expense1).trim();
-                                itemPrice1.setText(expense);
+                                String expenseT1 = Long.toString(expense1).trim();
+                                itemPrice1.setText(expenseT1);
 
                             }
-
+                            setUpGraph();
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -302,6 +291,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     }
                 });
     }
+    public long getExpense1() {
+        return expense1;
+    }
+
 
     public void Datatype2(){
         mType2 = findViewById(R.id.mType2);
@@ -318,7 +311,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
                                 expense2 += document.getLong("amount");
                                 String expenseT2 = Long.toString(expense2).trim();
                                 itemPrice2.setText(expenseT2);
@@ -370,7 +362,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     }
-
+    public long getExpense2() {
+        return expense2;
+    }
 
     public void Datatype3(){
         mType3 = findViewById(R.id.mType3);
@@ -440,7 +434,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     }
-
+    public long getExpense3() {
+        return expense3;
+    }
 
     public void Datatype4(){
         mType4 = findViewById(R.id.mType4);
@@ -509,7 +505,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     }
-
+    public long getExpense4() {
+        return expense4;
+    }
     public void Datatype5(){
         mType5 = findViewById(R.id.mType5);
         itemPrice5 = findViewById(R.id.itemPrice5);
@@ -578,7 +576,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     }
-
+    public long getExpense5() {
+        return expense5;
+    }
 
     public void Datatype6(){
         mType6 = findViewById(R.id.mType6);
@@ -647,7 +647,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     }
-
+    public long getExpense6() {
+        return expense6;
+    }
 
     public void Datatype7(){
         mType7 = findViewById(R.id.mType7);
@@ -716,7 +718,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     }
-
+    public long getExpense7() {
+        return expense7;
+    }
 
     public void Datatype8(){
         mType8 = findViewById(R.id.mType8);
@@ -785,7 +789,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     }
-
+    public long getExpense8() {
+        return expense8;
+    }
 
     public void Datatype9(){
         mType9 = findViewById(R.id.mType9);
@@ -854,7 +860,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     }
-
+    public long getExpense9() {
+        return expense9;
+    }
 
     public void updateColor1(long expense1, long goal1) {
         if (goal1 == 0 && expense1 != 0) {

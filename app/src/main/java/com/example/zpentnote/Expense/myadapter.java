@@ -48,7 +48,6 @@ public class myadapter extends RecyclerView.Adapter<myadapter.myviewholder>
                 intent.putExtra("note", expense.getNote());
                 intent.putExtra("category", expense.getCategory());
                 intent.putExtra("amount", expense.getAmount());
-
                 view.getContext().startActivity(intent);
             }
         });
@@ -63,8 +62,10 @@ public class myadapter extends RecyclerView.Adapter<myadapter.myviewholder>
 
         RelativeLayout rowDetail;
         TextView note,category,time,amount;
+        long result;
         public myviewholder(@NonNull View itemView) {
             super(itemView);
+
             rowDetail = itemView.findViewById(R.id.rowDetail);
             note = itemView.findViewById(R.id.note);
             category = itemView.findViewById(R.id.category);

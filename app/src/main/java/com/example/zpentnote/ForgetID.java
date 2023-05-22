@@ -61,11 +61,6 @@ public class ForgetID extends AppCompatActivity {
             forgetEmail.requestFocus();
             return;
         }
-        if (!email.equals("^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$")){
-            forgetEmail.setError("Please enter a type of Email");
-            forgetEmail.requestFocus();
-            return;
-        }
         mDialog.setMessage("Processing..");
         mDialog.show();
         auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {

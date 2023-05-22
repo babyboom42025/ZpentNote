@@ -27,11 +27,12 @@
                 android:layout_marginLeft="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="250dp">
+
                 <com.github.mikephil.charting.charts.PieChart
-                    android:backgroundTint="#70FFFFFF"
-                    android:id="@+id/pieChart"
+                    android:id="@+id/graph"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#70FFFFFF" />
             </androidx.cardview.widget.CardView>
 
             <com.google.android.material.textfield.TextInputLayout

@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
-    
+
     RecyclerView review;
     ArrayList<ExpenseModel> datalist;
     FirebaseFirestore db;

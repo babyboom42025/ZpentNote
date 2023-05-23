@@ -77,6 +77,9 @@ public class AddExpenses extends AppCompatActivity {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = currentDateTime.format(formatter);
+        LocalDateTime currentMonth = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("MM");
+        String formattedMonth = currentMonth.format(format);
         Examount = findViewById(R.id.amount);
         Exnote = findViewById(R.id.note);
 
@@ -84,6 +87,7 @@ public class AddExpenses extends AppCompatActivity {
         String note = Exnote.getText().toString().trim();
         String category = Excategory.getSelectedItem().toString().trim();
         String amount = Examount.getText().toString().trim();
+        String month = formattedMonth.trim();
         String time = formattedDateTime.trim();
 
 
@@ -100,7 +104,7 @@ public class AddExpenses extends AppCompatActivity {
             return;
         }
         if (!TextUtils.isEmpty(amount)&&!category.equals("...")){
-            ExpenseModel expenseModel = new ExpenseModel(expenseId,note,category,Long.parseLong(amount),time,
+            ExpenseModel expenseModel = new ExpenseModel(expenseId,note,category,Long.parseLong(amount),time,month,
                     FirebaseAuth.getInstance().getUid());
 
             FirebaseFirestore

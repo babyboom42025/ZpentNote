@@ -1,5 +1,6 @@
 package com.example.zpentnote;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
@@ -22,6 +23,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -30,25 +32,27 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import java.util.Calendar;
 
 public class Setting extends AppCompatActivity {
 
     RelativeLayout editgoal,aboutUs;
-    ImageView profileBtn;
+    CircleImageView profileBtn;
 
     SwitchCompat notificationSwitch;
 
     FirebaseFirestore db;
     LinearLayout logout;
 
-    FirebaseStorage storage;
-    StorageReference storageRef;
+
 
 
     @Override
@@ -60,6 +64,26 @@ public class Setting extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference("images/profile");
+
+
+        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Use the downloaded URI to load the image into the ImageView
+                Glide.with(getApplicationContext())
+                        .load(uri)
+                        .circleCrop()
+                        .into(profileBtn);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors that occur during the download
+            }
+        });
 
         editgoal = findViewById(R.id.editgoal);
         profileBtn = findViewById(R.id.profileBtn);
@@ -80,13 +104,6 @@ public class Setting extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Profile.class));
             }
         });
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("1234", "notification", NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel);
-        }
 
         aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override

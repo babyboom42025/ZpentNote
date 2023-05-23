@@ -20,23 +20,14 @@
             android:orientation="vertical">
 
             <!--อยากให้มันเป็นปุ่มกดไปหน้าProfile-->
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileBtn"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="20dp"
                 android:src="@drawable/profile"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Username"
-                android:textColor="@color/white"
-                android:textSize="25dp"
-                android:textStyle="bold"/>
 
             <LinearLayout
                 android:background="@drawable/round_back_white10_20"

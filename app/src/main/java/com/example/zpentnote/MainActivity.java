@@ -33,12 +33,16 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    TextView addExpenses, itemPrice1, itemPrice2, itemPrice3, itemPrice4, itemPrice5, itemPrice6, itemPrice7, itemPrice8, itemPrice9;
+    TextView addExpenses, itemPrice1, itemPrice2, itemPrice3, itemPrice4, itemPrice5, itemPrice6, itemPrice7, itemPrice8, itemPrice9,Month;
 
     LinearLayout mType1, mType2, mType3, mType4, mType5, mType6, mType7, mType8, mType9;
 
@@ -64,9 +68,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         if (actionBar != null) {
             actionBar.hide();
         }
+        ShowMonth();
         autoCompleteTxt = findViewById(R.id.auto_complete_txt);
         adapterItems = new ArrayAdapter<String>(this, R.layout.list_item, items);
         autoCompleteTxt.setAdapter(adapterItems);
+
 
         autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -206,6 +212,16 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         });
     }
 
+    private void ShowMonth() {
+        Month = findViewById(R.id.currentMonth);
+        TimeZone thaiTimeZone = TimeZone.getTimeZone("Asia/Bangkok");
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM", Locale.US);
+        dateFormat.setTimeZone(thaiTimeZone);
+        String currentDate = dateFormat.format(calendar.getTime());
+        Month.setText("Today is " + currentDate);
+    }
+
 
     private void setUpGraph() {
 
@@ -268,6 +284,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         scrollView.smoothScrollTo(0, 0);
         swipeRefreshLayout.setRefreshing(false);
         setUpGraph();
+        ShowMonth();
     }
 
 

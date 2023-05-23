@@ -10,20 +10,30 @@ public class ExpenseModel implements Serializable {
     private long amount;
     private String time;
     private String uid;
+    private String month;
 
 
 
 
-    public ExpenseModel(String expenseId, String note, String category, long amount, String time, String uid) {
+    public ExpenseModel(String expenseId, String note, String category, long amount, String time,String month, String uid) {
         this.expenseId = expenseId;
         this.note = note;
         this.category = category;
         this.amount = amount;
         this.time = time;
         this.uid = uid;
+        this.month = month;
     }
     public ExpenseModel(){
 
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
     }
 
     public String getExpenseId() {

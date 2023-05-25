@@ -78,12 +78,13 @@ public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnR
 
     private void ConDetail() {
         String receivedData = getIntent().getStringExtra("key");
+        String receivedMonth = getIntent().getStringExtra("month");
         if(receivedData!=null){
             if (receivedData.equals("type1")){
                 db.collection("expenses")
                         .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                         .whereEqualTo("category","ประเภทหนังสือ")
-                        .orderBy("time", Query.Direction.DESCENDING)
+                        .whereEqualTo("month",receivedMonth)
                         .get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
@@ -136,7 +137,7 @@ public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnR
                 db.collection("expenses")
                         .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
                         .whereEqualTo("category","ประเภทการโดยสาร")
-                        .orderBy("time", Query.Direction.DESCENDING)
+                        .whereEqualTo("month",receivedMonth)
                         .get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
@@ -189,7 +190,7 @@ public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnR
                 db.collection("expenses")
                         .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
                         .whereEqualTo("category","ประเภทอาหาร")
-                        .orderBy("time", Query.Direction.DESCENDING)
+                        .whereEqualTo("month",receivedMonth)
                         .get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
@@ -241,7 +242,7 @@ public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnR
                 db.collection("expenses")
                         .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
                         .whereEqualTo("category","ประเภทการออกกำลังกาย")
-                        .orderBy("time", Query.Direction.DESCENDING)
+                        .whereEqualTo("month",receivedMonth)
                         .get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
@@ -293,7 +294,7 @@ public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnR
                 db.collection("expenses")
                         .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
                         .whereEqualTo("category","ประเภทความบันเทิง")
-                        .orderBy("time", Query.Direction.DESCENDING)
+                        .whereEqualTo("month",receivedMonth)
                         .get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
@@ -345,7 +346,7 @@ public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnR
                 db.collection("expenses")
                         .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
                         .whereEqualTo("category","ประเภทโทรศัพท์มือถือ")
-                        .orderBy("time", Query.Direction.DESCENDING)
+                        .whereEqualTo("month",receivedMonth)
                         .get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
@@ -398,7 +399,7 @@ public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnR
                 db.collection("expenses")
                         .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
                         .whereEqualTo("category","ประเภทสังสรรค์")
-                        .orderBy("time", Query.Direction.DESCENDING)
+                        .whereEqualTo("month",receivedMonth)
                         .get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
@@ -451,7 +452,7 @@ public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnR
                 db.collection("expenses")
                         .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
                         .whereEqualTo("category","ประเภทจิปาถะ")
-                        .orderBy("time", Query.Direction.DESCENDING)
+                        .whereEqualTo("month",receivedMonth)
                         .get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
@@ -504,7 +505,7 @@ public class Details extends AppCompatActivity implements SwipeRefreshLayout.OnR
                 db.collection("expenses")
                         .whereEqualTo("uid",FirebaseAuth.getInstance().getUid())
                         .whereEqualTo("category","อื่นๆ...")
-                        .orderBy("time", Query.Direction.DESCENDING)
+                        .whereEqualTo("month",receivedMonth)
                         .get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override

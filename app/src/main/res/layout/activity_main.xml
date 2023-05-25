@@ -26,7 +26,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
+                android:layout_height="250dp">
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/graph"
@@ -46,23 +46,23 @@
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:layout_gravity="right" />
-
-            <com.google.android.material.textfield.TextInputLayout
+            <TextView
+                android:textColor="@color/black"
+                android:text="Select Month"
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Spinner
+                android:background="#90FFFFFF"
+                android:layout_margin="5dp"
+                android:padding="15dp"
+                android:outlineSpotShadowColor="#90FFFFFF"
+                android:outlineAmbientShadowColor="#90FFFFFF"
+                android:id="@+id/monthmain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                app:hintTextColor="@color/black"
-                android:hint="Select Month"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-
-                <AutoCompleteTextView
-                    android:id="@+id/auto_complete_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#70FFFFFF"
-                    android:inputType="none"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:gravity="center"
+                android:entries="@array/Month"/>
 
             <!--เป็นที่แสดงของมูลของแต่ละหมวดที่ตั้งไว้ เช่น ค่าอาหาร -->
             <ScrollView

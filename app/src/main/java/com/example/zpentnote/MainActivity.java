@@ -18,6 +18,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -47,17 +49,17 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     LinearLayout mType1, mType2, mType3, mType4, mType5, mType6, mType7, mType8, mType9;
 
     ImageView setting;
-
+    String selectedMonthValue = "";
     PieChart pieChart;
     ScrollView scrollView;
     String selectmonth = "";
-    String[] items = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-    AutoCompleteTextView autoCompleteTxt;
+    Spinner monthSpinner;
+
     long expense1 = 0, expense2 = 0, expense3 = 0, expense4 = 0, expense5 = 0, expense6 = 0, expense7 = 0, expense8 = 0, expense9 = 0;
     long goal1 = 0, goal2 = 0, goal3 = 0, goal4 = 0, goal5 = 0, goal6 = 0, goal7 = 0, goal8 = 0, goal9 = 0;
 
     private SwipeRefreshLayout swipeRefreshLayout;
-    ArrayAdapter<String> adapterItems;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,16 +71,43 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             actionBar.hide();
         }
         ShowMonth();
-        autoCompleteTxt = findViewById(R.id.auto_complete_txt);
-        adapterItems = new ArrayAdapter<String>(this, R.layout.list_item, items);
-        autoCompleteTxt.setAdapter(adapterItems);
 
+        monthSpinner = findViewById(R.id.monthmain);
+        Calendar calendar = Calendar.getInstance();
+        int currentMonth = calendar.get(Calendar.MONTH);
+        monthSpinner.setSelection(currentMonth);
 
-        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectmonth = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(), "Item: " + selectmonth, Toast.LENGTH_SHORT).show();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedMonth = parent.getItemAtPosition(position).toString();
+                String[] monthValues = getResources().getStringArray(R.array.MonthValues); // Retrieve the array of month values
+                int index = Arrays.asList(getResources().getStringArray(R.array.Month)).indexOf(selectedMonth); // Find the index of the selected month
+                if (index >= 0 && index < monthValues.length) {
+                    selectedMonthValue = monthValues[index]; // Get the corresponding month value
+                    Toast.makeText(getApplicationContext(), "Selected Month Value: " + selectedMonthValue, Toast.LENGTH_SHORT).show();
+                    expense1 = 0;
+                    expense2 = 0;
+                    expense3 = 0;
+                    expense4 = 0;
+                    expense5 = 0;
+                    expense6 = 0;
+                    expense7 = 0;
+                    expense8 = 0;
+                    expense9 = 0;
+                    Datatype1();
+                    Datatype2();
+                    Datatype3();
+                    Datatype4();
+                    Datatype5();
+                    Datatype6();
+                    Datatype7();
+                    Datatype8();
+                    Datatype9();
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
@@ -130,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 String dataToSend = "type1";
                 Intent intent = new Intent(MainActivity.this, Details.class);
                 intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
                 startActivity(intent);
             }
         });
@@ -139,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 String dataToSend = "type2";
                 Intent intent = new Intent(MainActivity.this, Details.class);
                 intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
                 startActivity(intent);
             }
         });
@@ -148,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 String dataToSend = "type3";
                 Intent intent = new Intent(MainActivity.this, Details.class);
                 intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
                 startActivity(intent);
             }
         });
@@ -157,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 String dataToSend = "type4";
                 Intent intent = new Intent(MainActivity.this, Details.class);
                 intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
                 startActivity(intent);
             }
         });
@@ -167,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 String dataToSend = "type5";
                 Intent intent = new Intent(MainActivity.this, Details.class);
                 intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
                 startActivity(intent);
             }
         });
@@ -177,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 String dataToSend = "type6";
                 Intent intent = new Intent(MainActivity.this, Details.class);
                 intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
                 startActivity(intent);
             }
         });
@@ -187,6 +222,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 String dataToSend = "type7";
                 Intent intent = new Intent(MainActivity.this, Details.class);
                 intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
                 startActivity(intent);
             }
         });
@@ -207,6 +243,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 String dataToSend = "type9";
                 Intent intent = new Intent(MainActivity.this, Details.class);
                 intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
                 startActivity(intent);
             }
         });
@@ -296,20 +333,24 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category", "ประเภทหนังสือ")
-                .orderBy("time", Query.Direction.DESCENDING)
+                .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                expense1 += document.getLong("amount");
-                                String expenseT1 = Long.toString(expense1).trim();
-                                itemPrice1.setText(expenseT1);
-
+                            if (task.getResult() != null) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense1 += document.getLong("amount");
+                                    String expenseT1 = Long.toString(expense1).trim();
+                                    itemPrice1.setText(expenseT1);
+                                    System.out.println("Showdata"+expenseT1);
+                                }
+                                setUpGraph();
+                            } else {
+                                itemPrice1.setText("0");
                             }
-                            setUpGraph();
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -359,7 +400,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category", "ประเภทการโดยสาร")
-                .orderBy("time", Query.Direction.DESCENDING)
+                .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -423,7 +464,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category", "ประเภทอาหาร")
-                .orderBy("time", Query.Direction.DESCENDING)
+                .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -487,7 +528,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category", "ประเภทการออกกำลังกาย")
-                .orderBy("time", Query.Direction.DESCENDING)
+                .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -550,7 +591,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category", "ประเภทความบันเทิง")
-                .orderBy("time", Query.Direction.DESCENDING)
+                .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -604,7 +645,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 });
     }
 
-
     public void Datatype6() {
         mType6 = findViewById(R.id.mType6);
         itemPrice6 = findViewById(R.id.itemPrice6);
@@ -613,7 +653,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category", "ประเภทโทรศัพท์มือถือ")
-                .orderBy("time", Query.Direction.DESCENDING)
+                .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -676,7 +716,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category", "ประเภทสังสรรค์")
-                .orderBy("time", Query.Direction.DESCENDING)
+                .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -732,7 +772,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     }
 
-
     public void Datatype8() {
         mType8 = findViewById(R.id.mType8);
         itemPrice8 = findViewById(R.id.itemPrice8);
@@ -741,7 +780,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category", "ประเภทจิปาถะ")
-                .orderBy("time", Query.Direction.DESCENDING)
+                .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -804,7 +843,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
                 .whereEqualTo("category", "อื่นๆ...")
-                .orderBy("time", Query.Direction.DESCENDING)
+                .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

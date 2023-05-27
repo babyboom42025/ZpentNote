@@ -113,18 +113,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(this);
 
-        Datatype1();
-        Datatype2();
-        Datatype3();
-        Datatype4();
-        Datatype5();
-        Datatype6();
-        Datatype7();
-        Datatype8();
-        Datatype9();
 
         addExpenses = findViewById(R.id.addExpenses);
         setting = findViewById(R.id.setting);
+        mType1 = findViewById(R.id.mType1);
         mType2 = findViewById(R.id.mType2);
         mType3 = findViewById(R.id.mType3);
         mType4 = findViewById(R.id.mType4);

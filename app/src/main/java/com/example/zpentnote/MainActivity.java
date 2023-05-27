@@ -914,8 +914,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 setUpGraph();
                             } else {
                                 expense9 = 0;
-                                String expenseT9 = Long.toString(expense4).trim();
-                                itemPrice4.setText(expenseT9);
+                                String expenseT9 = Long.toString(expense9).trim();
+                                itemPrice9.setText(expenseT9);
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());

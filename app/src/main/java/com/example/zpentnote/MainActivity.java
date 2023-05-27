@@ -128,8 +128,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         scrollView = findViewById(R.id.ScrollView);
         pieChart = findViewById(R.id.graph);
 
-        System.out.println("Data in graph" + expense1);
-
 
         addExpenses.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -306,6 +304,17 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         pieChart.getDescription().setTextSize(12f);
         pieChart.getDescription().setTextColor(getResources().getColor(R.color.black));
         pieChart.getDescription().setEnabled(true);
+
+
+        Con1();
+        Con2();
+        Con3();
+        Con4();
+        Con5();
+        Con6();
+        Con7();
+        Con8();
+        Con9();
     }
 
     @Override
@@ -362,21 +371,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 goal1 += document.getLong("type1");
                                 System.out.println("goal: " + document);
                             }
-                            if(goal1==0 && expense1 == 0){
-                                mType1.setBackgroundResource(R.color.color_def);
-                            } else if(goal1 == 0 && expense1 != 0){
-                                mType1.setBackgroundResource(R.color.color_over);
-                            } else if (goal1 != 0 && expense1 == 0) {
-                                mType1.setBackgroundResource(R.color.color_min);
-                            } else if (expense1 > goal1) {
-                                mType1.setBackgroundResource(R.color.color_over);
-                            } else if (expense1 == goal1) {
-                                mType1.setBackgroundResource(R.color.color_max);
-                            }else if (expense1 <= goal1 * 0.5) {
-                                mType1.setBackgroundResource(R.color.color_min);
-                            }else if (expense1 < goal1 * 0.99 ) {
-                                mType1.setBackgroundResource(R.color.color_mid);
-                            }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -385,6 +379,144 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
                 });
     }
+
+    private void Con1() {
+        if(goal1==0 && expense1 == 0){
+            mType1.setBackgroundResource(R.color.color_def);
+        } else if(goal1 == 0 && expense1 != 0){
+            mType1.setBackgroundResource(R.color.color_over);
+        } else if (expense1 > goal1) {
+            mType1.setBackgroundResource(R.color.color_over);
+        } else if (expense1 == goal1) {
+            mType1.setBackgroundResource(R.color.color_max);
+        }else if (expense1 > goal1 * 0.5 ) {
+            mType1.setBackgroundResource(R.color.color_mid);
+        }else if (expense1 <= goal1 * 0.5) {
+            mType1.setBackgroundResource(R.color.color_min);
+        }
+    }
+    private void Con2() {
+        if(goal2==0 && expense2 == 0){
+            mType2.setBackgroundResource(R.color.color_def);
+        } else if(goal2 == 0 && expense2 != 0){
+            mType2.setBackgroundResource(R.color.color_over);
+        } else if (expense2 > goal2) {
+            mType2.setBackgroundResource(R.color.color_over);
+        } else if (expense2 == goal2) {
+            mType2.setBackgroundResource(R.color.color_max);
+        }else if (expense2 > goal2 * 0.5 ) {
+            mType2.setBackgroundResource(R.color.color_mid);
+        }else if (expense2 <= goal2 * 0.5) {
+            mType2.setBackgroundResource(R.color.color_min);
+        }
+    }
+    private void Con3() {
+        if(goal3==0 && expense3 == 0){
+            mType3.setBackgroundResource(R.color.color_def);
+        } else if(goal3 == 0 && expense3 != 0){
+            mType3.setBackgroundResource(R.color.color_over);
+        } else if (expense3 > goal3) {
+            mType3.setBackgroundResource(R.color.color_over);
+        } else if (expense3 == goal3) {
+            mType3.setBackgroundResource(R.color.color_max);
+        }else if (expense3 > goal3 * 0.5 ) {
+            mType3.setBackgroundResource(R.color.color_mid);
+        }else if (expense3 <= goal3 * 0.5) {
+            mType3.setBackgroundResource(R.color.color_min);
+        }
+    }
+    private void Con4() {
+        if(goal4==0 && expense4 == 0){
+            mType4.setBackgroundResource(R.color.color_def);
+        } else if(goal4 == 0 && expense4 != 0){
+            mType4.setBackgroundResource(R.color.color_over);
+        } else if (expense4 > goal4) {
+            mType4.setBackgroundResource(R.color.color_over);
+        } else if (expense4 == goal4) {
+            mType4.setBackgroundResource(R.color.color_max);
+        }else if (expense4 > goal4 * 0.5 ) {
+            mType4.setBackgroundResource(R.color.color_mid);
+        }else if (expense4 <= goal4 * 0.5) {
+            mType4.setBackgroundResource(R.color.color_min);
+        }
+    }
+    private void Con5() {
+        if(goal5==0 && expense5 == 0){
+            mType5.setBackgroundResource(R.color.color_def);
+        } else if(goal5 == 0 && expense5 != 0){
+            mType5.setBackgroundResource(R.color.color_over);
+        } else if (expense5 > goal5) {
+            mType5.setBackgroundResource(R.color.color_over);
+        } else if (expense5 == goal5) {
+            mType5.setBackgroundResource(R.color.color_max);
+        }else if (expense5 > goal5 * 0.5 ) {
+            mType5.setBackgroundResource(R.color.color_mid);
+        }else if (expense5 <= goal5 * 0.5) {
+            mType5.setBackgroundResource(R.color.color_min);
+        }
+    }
+    private void Con6() {
+        if(goal6==0 && expense6 == 0){
+            mType6.setBackgroundResource(R.color.color_def);
+        } else if(goal6 == 0 && expense6 != 0){
+            mType6.setBackgroundResource(R.color.color_over);
+        } else if (expense6 > goal6) {
+            mType6.setBackgroundResource(R.color.color_over);
+        } else if (expense6 == goal6) {
+            mType6.setBackgroundResource(R.color.color_max);
+        }else if (expense6 > goal6 * 0.5 ) {
+            mType6.setBackgroundResource(R.color.color_mid);
+        }else if (expense6 <= goal6 * 0.5) {
+            mType6.setBackgroundResource(R.color.color_min);
+        }
+    }
+    private void Con7() {
+        if(goal7==0 && expense7 == 0){
+            mType7.setBackgroundResource(R.color.color_def);
+        } else if(goal7 == 0 && expense7 != 0){
+            mType7.setBackgroundResource(R.color.color_over);
+        } else if (expense7 > goal7) {
+            mType7.setBackgroundResource(R.color.color_over);
+        } else if (expense7 == goal7) {
+            mType7.setBackgroundResource(R.color.color_max);
+        }else if (expense7 > goal7 * 0.5 ) {
+            mType7.setBackgroundResource(R.color.color_mid);
+        }else if (expense7 <= goal7 * 0.5) {
+            mType7.setBackgroundResource(R.color.color_min);
+        }
+    }
+    private void Con8() {
+        if(goal8==0 && expense8 == 0){
+            mType8.setBackgroundResource(R.color.color_def);
+        } else if(goal8 == 0 && expense8 != 0){
+            mType8.setBackgroundResource(R.color.color_over);
+        } else if (expense8 > goal8) {
+            mType8.setBackgroundResource(R.color.color_over);
+        } else if (expense8 == goal8) {
+            mType8.setBackgroundResource(R.color.color_max);
+        }else if (expense8 > goal8 * 0.5 ) {
+            mType8.setBackgroundResource(R.color.color_mid);
+        }else if (expense8 <= goal8 * 0.5) {
+            mType8.setBackgroundResource(R.color.color_min);
+        }
+    }
+    private void Con9() {
+        if(goal9==0 && expense9 == 0){
+            mType9.setBackgroundResource(R.color.color_def);
+        } else if(goal9 == 0 && expense9 != 0){
+            mType9.setBackgroundResource(R.color.color_over);
+        } else if (expense9 > goal9) {
+            mType9.setBackgroundResource(R.color.color_over);
+        } else if (expense9 == goal9) {
+            mType9.setBackgroundResource(R.color.color_max);
+        }else if (expense9 > goal9 * 0.5 ) {
+            mType9.setBackgroundResource(R.color.color_mid);
+        }else if (expense9 <= goal9 * 0.5) {
+            mType9.setBackgroundResource(R.color.color_min);
+        }
+    }
+
+
 
     public void Datatype2() {
         mType2 = findViewById(R.id.mType2);
@@ -431,30 +563,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 goal2 += document.getLong("type2");
                                 System.out.println("goal: " + document);
                             }
-                            if (goal2 == 0 && expense2 == 0) {
-                                mType2.setBackgroundResource(R.color.color_def);
-                            } else if (goal2 == 0 && expense2 != 0) {
-                                mType2.setBackgroundResource(R.color.color_max);
-                            } else if (goal2 != 0 && expense2 == 0) {
-                                mType2.setBackgroundResource(R.color.color_min);
-                            } else if (expense2 > goal2) {
-                                mType2.setBackgroundResource(R.color.color_over);
-                            } else if (expense2 == goal2) {
-                                mType2.setBackgroundResource(R.color.color_max);
-                            } else if (expense2 <= goal2 * 0.5) {
-                                mType2.setBackgroundResource(R.color.color_min);
-                            } else if (expense2 < goal2 * 0.99) {
-                                mType2.setBackgroundResource(R.color.color_mid);
-                            }
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                         setUpGraph();
                     }
                 });
-
-
     }
 
     public void Datatype3() {
@@ -502,29 +616,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 goal3 += document.getLong("type3");
                                 System.out.println("goal: " + document);
                             }
-                            if (goal3 == 0 && expense3 == 0) {
-                                mType3.setBackgroundResource(R.color.color_def);
-                            } else if (goal3 == 0 && expense3 != 0) {
-                                mType3.setBackgroundResource(R.color.color_max);
-                            } else if (goal3 != 0 && expense3 == 0) {
-                                mType3.setBackgroundResource(R.color.color_min);
-                            } else if (expense3 > goal3) {
-                                mType3.setBackgroundResource(R.color.color_over);
-                            } else if (expense3 == goal3) {
-                                mType3.setBackgroundResource(R.color.color_max);
-                            } else if (expense3 <= goal3 * 0.5) {
-                                mType1.setBackgroundResource(R.color.color_min);
-                            } else if (expense3 < goal3 * 0.99) {
-                                mType1.setBackgroundResource(R.color.color_mid);
-                            }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                         setUpGraph();
                     }
                 });
-
-
     }
 
     public void Datatype4() {
@@ -572,29 +669,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 goal4 += document.getLong("type4");
                                 System.out.println("goal: " + document);
                             }
-                            if (goal4 == 0 && expense4 == 0) {
-                                mType4.setBackgroundResource(R.color.color_def);
-                            } else if (goal4 == 0 && expense4 != 0) {
-                                mType4.setBackgroundResource(R.color.color_max);
-                            } else if (goal4 != 0 && expense4 == 0) {
-                                mType4.setBackgroundResource(R.color.color_min);
-                            } else if (expense4 > goal4) {
-                                mType4.setBackgroundResource(R.color.color_over);
-                            } else if (expense4 == goal4) {
-                                mType4.setBackgroundResource(R.color.color_max);
-                            } else if (expense4 <= goal4 * 0.5) {
-                                mType4.setBackgroundResource(R.color.color_min);
-                            } else if (expense4 < goal4 * 0.99) {
-                                mType4.setBackgroundResource(R.color.color_mid);
-                            }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                         setUpGraph();
                     }
                 });
-
-
     }
 
     public void Datatype5() {
@@ -641,21 +721,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 goal5 += document.getLong("type5");
                                 System.out.println("goal: " + document);
-                            }
-                            if (goal5 == 0 && expense5 == 0) {
-                                mType5.setBackgroundResource(R.color.color_def);
-                            } else if (goal5 == 0 && expense5 != 0) {
-                                mType5.setBackgroundResource(R.color.color_max);
-                            } else if (goal5 != 0 && expense5 == 0) {
-                                mType5.setBackgroundResource(R.color.color_min);
-                            } else if (expense5 > goal5) {
-                                mType5.setBackgroundResource(R.color.color_over);
-                            } else if (expense5 == goal5) {
-                                mType5.setBackgroundResource(R.color.color_max);
-                            } else if (expense5 <= goal5 * 0.5) {
-                                mType1.setBackgroundResource(R.color.color_min);
-                            } else if (expense5 < goal5 * 0.99) {
-                                mType5.setBackgroundResource(R.color.color_mid);
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
@@ -710,23 +775,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 goal6 += document.getLong("type6");
                                 System.out.println("goal: " + document);
                             }
-                            if (goal6 == 0 && expense6 == 0) {
-                                mType6.setBackgroundResource(R.color.color_def);
-                            } else if (goal6 == 0 && expense6 != 0) {
-                                mType6.setBackgroundResource(R.color.color_max);
-                            } else if (goal6 != 0 && expense6 == 0) {
-                                mType6.setBackgroundResource(R.color.color_min);
-                            } else if (expense6 > goal6) {
-                                mType6.setBackgroundResource(R.color.color_over);
-                            } else if (expense6 == goal6) {
-                                mType6.setBackgroundResource(R.color.color_max);
-                            } else if (expense6 <= goal6 * 0.5) {
-                                mType6.setBackgroundResource(R.color.color_min);
-                            } else if (expense6 < goal6 * 0.99) {
-                                mType6.setBackgroundResource(R.color.color_mid);
-                            }
-
-                        } else {
+                             } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                         setUpGraph();
@@ -779,29 +828,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 goal7 += document.getLong("type7");
                                 System.out.println("goal: " + document);
                             }
-                            if (goal7 == 0 && expense7 == 0) {
-                                mType7.setBackgroundResource(R.color.color_def);
-                            } else if (goal7 == 0 && expense7 != 0) {
-                                mType7.setBackgroundResource(R.color.color_max);
-                            } else if (goal7 != 0 && expense7 == 0) {
-                                mType7.setBackgroundResource(R.color.color_min);
-                            } else if (expense7 > goal7) {
-                                mType7.setBackgroundResource(R.color.color_over);
-                            } else if (expense7 == goal7) {
-                                mType7.setBackgroundResource(R.color.color_max);
-                            } else if (expense7 <= goal7 * 0.5) {
-                                mType7.setBackgroundResource(R.color.color_min);
-                            } else if (expense7 < goal7 * 0.99) {
-                                mType7.setBackgroundResource(R.color.color_mid);
-                            }
-                        } else {
+                             } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                         setUpGraph();
                     }
                 });
-
-
     }
 
     public void Datatype8() {
@@ -849,23 +881,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 goal8 += document.getLong("type8");
                                 System.out.println("goal: " + document);
                             }
-                            if (goal8 == 0 && expense8 == 0) {
-                                mType8.setBackgroundResource(R.color.color_def);
-                            } else if (goal8 == 0 && expense8 != 0) {
-                                mType8.setBackgroundResource(R.color.color_max);
-                            } else if (goal8 != 0 && expense8 == 0) {
-                                mType8.setBackgroundResource(R.color.color_min);
-                            } else if (expense8 > goal8) {
-                                mType8.setBackgroundResource(R.color.color_over);
-                            } else if (expense8 == goal8) {
-                                mType8.setBackgroundResource(R.color.color_max);
-                            } else if (expense8 <= goal8 * 0.5) {
-                                mType8.setBackgroundResource(R.color.color_min);
-                            } else if (expense8 < goal8 * 0.99) {
-                                mType8.setBackgroundResource(R.color.color_mid);
-                            }
-
-                        } else {
+                            } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                         setUpGraph();
@@ -918,22 +934,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 goal9 += document.getLong("type9");
                                 System.out.println("goal: " + document);
                             }
-                            if (goal9 == 0 && expense9 == 0) {
-                                mType9.setBackgroundResource(R.color.color_def);
-                            } else if (goal9 == 0 && expense9 != 0) {
-                                mType9.setBackgroundResource(R.color.color_max);
-                            } else if (goal9 != 0 && expense9 == 0) {
-                                mType9.setBackgroundResource(R.color.color_min);
-                            } else if (expense9 > goal9) {
-                                mType9.setBackgroundResource(R.color.color_over);
-                            } else if (expense9 == goal9) {
-                                mType9.setBackgroundResource(R.color.color_max);
-                            } else if (expense9 <= goal9 * 0.5) {
-                                mType9.setBackgroundResource(R.color.color_min);
-                            } else if (expense9 < goal9 * 0.99) {
-                                mType9.setBackgroundResource(R.color.color_mid);
-                            }
-                        } else {
+                            } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                         setUpGraph();

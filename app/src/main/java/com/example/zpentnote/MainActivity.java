@@ -256,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM", Locale.US);
         dateFormat.setTimeZone(thaiTimeZone);
         String currentDate = dateFormat.format(calendar.getTime());
-        Month.setText("Today is " + currentDate);
+        Month.setText(currentDate);
     }
 
 
@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            if (task.getResult() != null) {
+                            if (!task.getResult().isEmpty()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                     expense1 += document.getLong("amount");
@@ -349,7 +349,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 }
                                 setUpGraph();
                             } else {
-                                itemPrice1.setText("0");
+                                expense1 = 0;
+                                String expenseT1 = Long.toString(expense1).trim();
+                                itemPrice1.setText(expenseT1);
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
@@ -406,13 +408,20 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                expense2 += document.getLong("amount");
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense2 += document.getLong("amount");
+                                    String expenseT2 = Long.toString(expense2).trim();
+                                    itemPrice2.setText(expenseT2);
+                                    System.out.println("Showdata"+expenseT2);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense2 = 0;
                                 String expenseT2 = Long.toString(expense2).trim();
                                 itemPrice2.setText(expenseT2);
-
                             }
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -470,14 +479,20 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                expense3 += document.getLong("amount");
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense3 += document.getLong("amount");
+                                    String expenseT3 = Long.toString(expense3).trim();
+                                    itemPrice3.setText(expenseT3);
+                                    System.out.println("Showdata"+expenseT3);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense3 = 0;
                                 String expenseT3 = Long.toString(expense3).trim();
                                 itemPrice3.setText(expenseT3);
-
                             }
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -534,13 +549,20 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                expense4 += document.getLong("amount");
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense4 += document.getLong("amount");
+                                    String expenseT4 = Long.toString(expense4).trim();
+                                    itemPrice4.setText(expenseT4);
+                                    System.out.println("Showdata"+expenseT4);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense4 = 0;
                                 String expenseT4 = Long.toString(expense4).trim();
                                 itemPrice4.setText(expenseT4);
                             }
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -597,14 +619,20 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                expense5 += document.getLong("amount");
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense5 += document.getLong("amount");
+                                    String expenseT5 = Long.toString(expense5).trim();
+                                    itemPrice5.setText(expenseT5);
+                                    System.out.println("Showdata"+expenseT5);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense5 = 0;
                                 String expenseT5 = Long.toString(expense5).trim();
                                 itemPrice5.setText(expenseT5);
-
                             }
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -659,17 +687,23 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                expense6 += document.getLong("amount");
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense6 += document.getLong("amount");
+                                    String expenseT6 = Long.toString(expense6).trim();
+                                    itemPrice6.setText(expenseT6);
+                                    System.out.println("Showdata"+expenseT6);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense6 = 0;
                                 String expenseT6 = Long.toString(expense6).trim();
                                 itemPrice6.setText(expenseT6);
-
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
-                        setUpGraph();
                     }
                 });
         db.collection("Goal")
@@ -722,14 +756,20 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                expense7 += document.getLong("amount");
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense7 += document.getLong("amount");
+                                    String expenseT7 = Long.toString(expense7).trim();
+                                    itemPrice7.setText(expenseT7);
+                                    System.out.println("Showdata"+expenseT7);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense7 = 0;
                                 String expenseT7 = Long.toString(expense7).trim();
                                 itemPrice7.setText(expenseT7);
-
                             }
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -786,14 +826,20 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                expense8 += document.getLong("amount");
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense8 += document.getLong("amount");
+                                    String expenseT8 = Long.toString(expense8).trim();
+                                    itemPrice8.setText(expenseT8);
+                                    System.out.println("Showdata"+expenseT8);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense8 = 0;
                                 String expenseT8 = Long.toString(expense8).trim();
                                 itemPrice8.setText(expenseT8);
-
                             }
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
@@ -849,13 +895,20 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                expense9 += document.getLong("amount");
-                                String expenseT9 = Long.toString(expense9).trim();
-                                itemPrice9.setText(expenseT9);
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense9 += document.getLong("amount");
+                                    String expenseT9 = Long.toString(expense9).trim();
+                                    itemPrice9.setText(expenseT9);
+                                    System.out.println("Showdata"+expenseT9);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense9 = 0;
+                                String expenseT9 = Long.toString(expense4).trim();
+                                itemPrice4.setText(expenseT9);
                             }
-
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }

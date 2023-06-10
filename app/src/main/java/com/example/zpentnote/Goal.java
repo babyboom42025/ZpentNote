@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class Goal extends AppCompatActivity {
 
-    EditText Gtype1,Gtype2,Gtype3,Gtype4,Gtype5,Gtype6,Gtype7,Gtype8,Gtype9;
+    EditText Gtype1,Gtype2,Gtype3,Gtype4,Gtype5,Gtype6,Gtype7,Gtype8,Gtype9,Gtype10,Gtype11,Gtype12,Gtype13,Gtype14;
     private GoalModel goalModel;
     Button submit;
     @Override
@@ -29,6 +29,10 @@ public class Goal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goal);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         goalModel=(GoalModel) getIntent().getSerializableExtra("Goal");
         submit =findViewById(R.id.submit);
@@ -53,6 +57,11 @@ public class Goal extends AppCompatActivity {
         Gtype7 = findViewById(R.id.type7);
         Gtype8 = findViewById(R.id.type8);
         Gtype9 = findViewById(R.id.type9);
+        Gtype10 = findViewById(R.id.type10);
+        Gtype11 = findViewById(R.id.type11);
+        Gtype12 = findViewById(R.id.type12);
+        Gtype13 = findViewById(R.id.type13);
+        Gtype14 = findViewById(R.id.type14);
 
 
 
@@ -65,9 +74,15 @@ public class Goal extends AppCompatActivity {
         String type7 = Gtype7.getText().toString().trim();
         String type8 = Gtype8.getText().toString().trim();
         String type9 = Gtype9.getText().toString().trim();
+        String type10 = Gtype10.getText().toString().trim();
+        String type11 = Gtype11.getText().toString().trim();
+        String type12 = Gtype12.getText().toString().trim();
+        String type13 = Gtype13.getText().toString().trim();
+        String type14 = Gtype14.getText().toString().trim();
 
         if (type1.equals("0")&&type2.equals("0")&&type3.equals("0")&&type4.equals("0")&&type5.equals("0")&&type6.equals("0")
-                &&type7.equals("0")&&type8.equals("0")&&type9.equals("0")) {
+                &&type7.equals("0")&&type8.equals("0")&&type9.equals("0")&&type10.equals("0")&&type11.equals("0")
+                &&type12.equals("0")&&type13.equals("0")&&type14.equals("0")) {
 
             Toast.makeText(Goal.this,"Please provide at least one information to proceed.",Toast.LENGTH_SHORT).show();
             return;
@@ -75,7 +90,8 @@ public class Goal extends AppCompatActivity {
 
         GoalModel goalModel = new GoalModel(Long.parseLong(type1),Long.parseLong(type2),Long.parseLong(type3),Long.parseLong(type4),Long.parseLong(type5),
                 Long.parseLong(type6),Long.parseLong(type7),Long.parseLong(type8),
-                Long.parseLong(type9),FirebaseAuth.getInstance().getUid(),gid);
+                Long.parseLong(type9),Long.parseLong(type10),Long.parseLong(type11),Long.parseLong(type12),
+                Long.parseLong(type13),Long.parseLong(type14),FirebaseAuth.getInstance().getUid(),gid);
 
 
         FirebaseFirestore

@@ -27,7 +27,7 @@ import java.util.Objects;
 public class EditGoal extends AppCompatActivity {
 
     FirebaseFirestore db;
-    TextInputEditText typeEdit1,typeEdit2,typeEdit3,typeEdit4,typeEdit5,typeEdit6,typeEdit7,typeEdit8,typeEdit9;
+    TextInputEditText typeEdit1,typeEdit2,typeEdit3,typeEdit4,typeEdit5,typeEdit6,typeEdit7,typeEdit8,typeEdit9,typeEdit10,typeEdit11,typeEdit12,typeEdit13,typeEdit14;
     TextView goalUpdate,goalDelete,goalBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,11 @@ public class EditGoal extends AppCompatActivity {
         typeEdit7 = findViewById(R.id.typeEdit7);
         typeEdit8 = findViewById(R.id.typeEdit8);
         typeEdit9 = findViewById(R.id.typeEdit9);
+        typeEdit10 = findViewById(R.id.typeEdit10);
+        typeEdit11 = findViewById(R.id.typeEdit11);
+        typeEdit12 = findViewById(R.id.typeEdit12);
+        typeEdit13 = findViewById(R.id.typeEdit13);
+        typeEdit14 = findViewById(R.id.typeEdit14);
         goalUpdate = findViewById(R.id.goalupdate);
         goalDelete = findViewById(R.id.goaldelete);
         goalBack = findViewById(R.id.goalback);
@@ -102,7 +107,12 @@ public class EditGoal extends AppCompatActivity {
                                             "type6", 0L,
                                             "type7", 0L,
                                             "type8", 0L,
-                                            "type9", 0L
+                                            "type9", 0L,
+                                            "type10", 0L,
+                                            "type11", 0L,
+                                            "type12", 0L,
+                                            "type13", 0L,
+                                            "type14", 0L
                                     )
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -147,7 +157,12 @@ public class EditGoal extends AppCompatActivity {
                                             "type6", Long.parseLong(typeEdit6.getText().toString()),
                                             "type7", Long.parseLong(typeEdit7.getText().toString()),
                                             "type8", Long.parseLong(typeEdit8.getText().toString()),
-                                            "type9", Long.parseLong(typeEdit9.getText().toString())
+                                            "type9", Long.parseLong(typeEdit9.getText().toString()),
+                                            "type10", Long.parseLong(typeEdit10.getText().toString()),
+                                            "type11", Long.parseLong(typeEdit11.getText().toString()),
+                                            "type12", Long.parseLong(typeEdit12.getText().toString()),
+                                            "type13", Long.parseLong(typeEdit13.getText().toString()),
+                                            "type14", Long.parseLong(typeEdit14.getText().toString())
                                     )
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -186,6 +201,11 @@ public class EditGoal extends AppCompatActivity {
                             String type7 = String.valueOf(documentSnapshot.getLong("type7"));
                             String type8 = String.valueOf(documentSnapshot.getLong("type8"));
                             String type9 = String.valueOf(documentSnapshot.getLong("type9"));
+                            String type10 = String.valueOf(documentSnapshot.getLong("type10"));
+                            String type11 = String.valueOf(documentSnapshot.getLong("type11"));
+                            String type12 = String.valueOf(documentSnapshot.getLong("type12"));
+                            String type13 = String.valueOf(documentSnapshot.getLong("type13"));
+                            String type14 = String.valueOf(documentSnapshot.getLong("type14"));
 
                             // Update your TextInputEditText fields with the retrieved data
                             // Repeat this for other fields
@@ -198,6 +218,11 @@ public class EditGoal extends AppCompatActivity {
                             typeEdit7.setText(type7);
                             typeEdit8.setText(type8);
                             typeEdit9.setText(type9);
+                            typeEdit10.setText(type10);
+                            typeEdit11.setText(type11);
+                            typeEdit12.setText(type12);
+                            typeEdit13.setText(type13);
+                            typeEdit14.setText(type14);
                             // Repeat this for other fields
                         }
                     }

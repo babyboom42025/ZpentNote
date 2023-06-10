@@ -44,9 +44,9 @@ import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    TextView addExpenses, itemPrice1, itemPrice2, itemPrice3, itemPrice4, itemPrice5, itemPrice6, itemPrice7, itemPrice8, itemPrice9,Month;
+    TextView addExpenses, itemPrice1, itemPrice2, itemPrice3, itemPrice4, itemPrice5, itemPrice6, itemPrice7, itemPrice8, itemPrice9,Month, itemPrice10, itemPrice11, itemPrice12, itemPrice13, itemPrice14;
 
-    LinearLayout mType1, mType2, mType3, mType4, mType5, mType6, mType7, mType8, mType9;
+    LinearLayout mType1, mType2, mType3, mType4, mType5, mType6, mType7, mType8, mType9, mType10, mType11, mType12, mType13, mType14;
 
     ImageView setting;
     String selectedMonthValue = "";
@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     String selectmonth = "";
     Spinner monthSpinner;
 
-    long expense1 = 0, expense2 = 0, expense3 = 0, expense4 = 0, expense5 = 0, expense6 = 0, expense7 = 0, expense8 = 0, expense9 = 0;
-    long goal1 = 0, goal2 = 0, goal3 = 0, goal4 = 0, goal5 = 0, goal6 = 0, goal7 = 0, goal8 = 0, goal9 = 0;
+    long expense1 = 0, expense2 = 0, expense3 = 0, expense4 = 0, expense5 = 0, expense6 = 0, expense7 = 0, expense8 = 0, expense9 = 0, expense10 = 0, expense11 = 0, expense12 = 0, expense13 = 0, expense14 = 0;
+    long goal1 = 0, goal2 = 0, goal3 = 0, goal4 = 0, goal5 = 0, goal6 = 0, goal7 = 0, goal8 = 0, goal9 = 0, goal10 = 0, goal11 = 0, goal12 = 0, goal13 = 0, goal14 = 0;
 
     private SwipeRefreshLayout swipeRefreshLayout;
 
@@ -95,6 +95,27 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     expense7 = 0;
                     expense8 = 0;
                     expense9 = 0;
+                    expense10 = 0;
+                    expense11 = 0;
+                    expense12 = 0;
+                    expense13 = 0;
+                    expense14 = 0;
+                    mType1.setBackgroundResource(R.color.color_def);
+                    mType2.setBackgroundResource(R.color.color_def);
+                    mType3.setBackgroundResource(R.color.color_def);
+                    mType4.setBackgroundResource(R.color.color_def);
+                    mType5.setBackgroundResource(R.color.color_def);
+                    mType6.setBackgroundResource(R.color.color_def);
+                    mType7.setBackgroundResource(R.color.color_def);
+                    mType8.setBackgroundResource(R.color.color_def);
+                    mType9.setBackgroundResource(R.color.color_def);
+                    mType10.setBackgroundResource(R.color.color_def);
+                    mType11.setBackgroundResource(R.color.color_def);
+                    mType12.setBackgroundResource(R.color.color_def);
+                    mType13.setBackgroundResource(R.color.color_def);
+                    mType14.setBackgroundResource(R.color.color_def);
+
+
                     Datatype1();
                     Datatype2();
                     Datatype3();
@@ -104,6 +125,10 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     Datatype7();
                     Datatype8();
                     Datatype9();
+                    Datatype10();
+                    Datatype12();
+                    Datatype13();
+                    Datatype14();
                 }
             }
             @Override
@@ -125,6 +150,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         mType7 = findViewById(R.id.mType7);
         mType8 = findViewById(R.id.mType8);
         mType9 = findViewById(R.id.mType9);
+        mType10 = findViewById(R.id.mType10);
+        mType11 = findViewById(R.id.mType11);
+        mType12 = findViewById(R.id.mType12);
+        mType13 = findViewById(R.id.mType13);
+        mType14 = findViewById(R.id.mType14);
         scrollView = findViewById(R.id.ScrollView);
         pieChart = findViewById(R.id.graph);
 
@@ -183,7 +213,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 startActivity(intent);
             }
         });
-
         mType5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -237,6 +266,62 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 startActivity(intent);
             }
         });
+
+        mType10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type10";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
+                startActivity(intent);
+            }
+        });
+
+        mType11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type11";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
+                startActivity(intent);
+            }
+        });
+
+        mType12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type12";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
+                startActivity(intent);
+            }
+        });
+
+        mType13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type13";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
+                startActivity(intent);
+            }
+        });
+
+        mType14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String dataToSend = "type14";
+                Intent intent = new Intent(MainActivity.this, Details.class);
+                intent.putExtra("key", dataToSend);
+                intent.putExtra("month",selectedMonthValue);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void ShowMonth() {
@@ -255,43 +340,64 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         List<PieEntry> pieEntryList = new ArrayList<>();
         List<Integer> colorsList = new ArrayList<>();
         if (expense1 != 0) {
-            pieEntryList.add(new PieEntry(expense1, "type1"));
+            pieEntryList.add(new PieEntry(expense1, "1"));
             colorsList.add(getResources().getColor(R.color.color1));
         }
         if (expense2 != 0) {
-            pieEntryList.add(new PieEntry(expense2, "type2"));
+            pieEntryList.add(new PieEntry(expense2, "2"));
             colorsList.add(getResources().getColor(R.color.color2));
         }
         if (expense3 != 0) {
-            pieEntryList.add(new PieEntry(expense3, "type3"));
+            pieEntryList.add(new PieEntry(expense3, "3"));
             colorsList.add(getResources().getColor(R.color.color3));
         }
         if (expense4 != 0) {
-            pieEntryList.add(new PieEntry(expense4, "type4"));
+            pieEntryList.add(new PieEntry(expense4, "4"));
             colorsList.add(getResources().getColor(R.color.color4));
         }
         if (expense5 != 0) {
-            pieEntryList.add(new PieEntry(expense5, "type5"));
+            pieEntryList.add(new PieEntry(expense5, "5"));
             colorsList.add(getResources().getColor(R.color.color5));
         }
         if (expense6 != 0) {
-            pieEntryList.add(new PieEntry(expense6, "type6"));
+            pieEntryList.add(new PieEntry(expense6, "6"));
             colorsList.add(getResources().getColor(R.color.color6));
         }
         if (expense7 != 0) {
-            pieEntryList.add(new PieEntry(expense7, "type7"));
+            pieEntryList.add(new PieEntry(expense7, "7"));
             colorsList.add(getResources().getColor(R.color.color7));
         }
         if (expense8 != 0) {
-            pieEntryList.add(new PieEntry(expense8, "type8"));
+            pieEntryList.add(new PieEntry(expense8, "8"));
             colorsList.add(getResources().getColor(R.color.color8));
         }
         if (expense9 != 0) {
-            pieEntryList.add(new PieEntry(expense9, "type9"));
+            pieEntryList.add(new PieEntry(expense9, "9"));
             colorsList.add(getResources().getColor(R.color.color9));
         }
-
-        PieDataSet pieDataSet = new PieDataSet(pieEntryList, "");
+        if (expense10 != 0) {
+            pieEntryList.add(new PieEntry(expense10, "10"));
+            colorsList.add(getResources().getColor(R.color.color10));
+        }
+        if (expense11 != 0) {
+            pieEntryList.add(new PieEntry(expense11, "11"));
+            colorsList.add(getResources().getColor(R.color.color11));
+        }
+        if (expense12 != 0) {
+            pieEntryList.add(new PieEntry(expense12, "12"));
+            colorsList.add(getResources().getColor(R.color.color12));
+        }
+        if (expense13 != 0) {
+            pieEntryList.add(new PieEntry(expense13, "13"));
+            colorsList.add(getResources().getColor(R.color.color13));
+        }
+        if (expense14 != 0) {
+            pieEntryList.add(new PieEntry(expense14, "14"));
+            colorsList.add(getResources().getColor(R.color.color14));
+        }
+        String totalExpensesLabel = "Total Expenses: " + (expense1 + expense2 + expense3 + expense4 + expense5
+                + expense6 + expense7 + expense8 + expense9 + expense10 + expense11 + expense12 + expense13 + expense14);
+        PieDataSet pieDataSet = new PieDataSet(pieEntryList,totalExpensesLabel);
         pieDataSet.setColors(colorsList);
         pieDataSet.setValueTextColor(getResources().getColor(R.color.white));
         PieData pieDat = new PieData(pieDataSet);
@@ -300,7 +406,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         pieChart.setData(pieDat);
         pieChart.invalidate();
 
-        pieChart.getDescription().setText(" ");
+        pieChart.getDescription().setText("Number is type");
         pieChart.getDescription().setTextSize(12f);
         pieChart.getDescription().setTextColor(getResources().getColor(R.color.black));
         pieChart.getDescription().setEnabled(true);
@@ -315,6 +421,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         Con7();
         Con8();
         Con9();
+        Con10();
+        Con11();
+        Con12();
+        Con13();
+        Con14();
     }
 
     @Override
@@ -326,59 +437,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
 
-    public void Datatype1() {
-        mType1 = findViewById(R.id.mType1);
-        itemPrice1 = findViewById(R.id.itemPrice1);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("expenses")
-                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category", "ประเภทหนังสือ")
-                .whereEqualTo("month",selectedMonthValue)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            if (!task.getResult().isEmpty()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                    expense1 += document.getLong("amount");
-                                    String expenseT1 = Long.toString(expense1).trim();
-                                    itemPrice1.setText(expenseT1);
-                                    System.out.println("Showdata"+expenseT1);
-                                }
-                                setUpGraph();
-                            } else {
-                                expense1 = 0;
-                                String expenseT1 = Long.toString(expense1).trim();
-                                itemPrice1.setText(expenseT1);
-                            }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-        db.collection("Goal")
-                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                goal1 += document.getLong("type1");
-                                System.out.println("goal: " + document);
-                            }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                        setUpGraph();
-                    }
-
-                });
-    }
 
     private void Con1() {
         if(goal1==0 && expense1 == 0){
@@ -391,7 +450,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             mType1.setBackgroundResource(R.color.color_max);
         }else if (expense1 > goal1 * 0.5 ) {
             mType1.setBackgroundResource(R.color.color_mid);
-        }else if (expense1 <= goal1 * 0.5) {
+        }else if (expense1 <= goal1 * 0.5 ) {
             mType1.setBackgroundResource(R.color.color_min);
         }
     }
@@ -516,7 +575,139 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         }
     }
 
+    private void Con10() {
+        if(goal10==0 && expense10 == 0){
+            mType10.setBackgroundResource(R.color.color_def);
+        } else if(goal10 == 0 && expense10 != 0){
+            mType10.setBackgroundResource(R.color.color_over);
+        } else if (expense10 > goal10) {
+            mType10.setBackgroundResource(R.color.color_over);
+        } else if (expense10 == goal10) {
+            mType10.setBackgroundResource(R.color.color_max);
+        }else if (expense10 > goal10 * 0.5 ) {
+            mType10.setBackgroundResource(R.color.color_mid);
+        }else if (expense10 <= goal10 * 0.5) {
+            mType10.setBackgroundResource(R.color.color_min);
+        }
+    }
 
+    private void Con11() {
+        if(goal11==0 && expense11 == 0){
+            mType11.setBackgroundResource(R.color.color_def);
+        } else if(goal11 == 0 && expense11 != 0){
+            mType11.setBackgroundResource(R.color.color_over);
+        } else if (expense11 > goal11) {
+            mType11.setBackgroundResource(R.color.color_over);
+        } else if (expense11 == goal11) {
+            mType11.setBackgroundResource(R.color.color_max);
+        }else if (expense11 > goal11 * 0.5 ) {
+            mType11.setBackgroundResource(R.color.color_mid);
+        }else if (expense11 <= goal11 * 0.5) {
+            mType11.setBackgroundResource(R.color.color_min);
+        }
+    }
+
+    private void Con12() {
+        if(goal12==0 && expense12 == 0){
+            mType12.setBackgroundResource(R.color.color_def);
+        } else if(goal12 == 0 && expense12 != 0){
+            mType12.setBackgroundResource(R.color.color_over);
+        } else if (expense12 > goal12) {
+            mType12.setBackgroundResource(R.color.color_over);
+        } else if (expense12 == goal12) {
+            mType12.setBackgroundResource(R.color.color_max);
+        }else if (expense12 > goal12 * 0.5 ) {
+            mType12.setBackgroundResource(R.color.color_mid);
+        }else if (expense12 <= goal12 * 0.5) {
+            mType12.setBackgroundResource(R.color.color_min);
+        }
+    }
+
+    private void Con13() {
+        if(goal13==0 && expense13 == 0){
+            mType13.setBackgroundResource(R.color.color_def);
+        } else if(goal13 == 0 && expense13 != 0){
+            mType13.setBackgroundResource(R.color.color_over);
+        } else if (expense13 > goal13) {
+            mType13.setBackgroundResource(R.color.color_over);
+        } else if (expense13 == goal13) {
+            mType13.setBackgroundResource(R.color.color_max);
+        }else if (expense13 > goal13 * 0.5 ) {
+            mType13.setBackgroundResource(R.color.color_mid);
+        }else if (expense13 <= goal13 * 0.5) {
+            mType13.setBackgroundResource(R.color.color_min);
+        }
+    }
+
+    private void Con14() {
+        if(goal14==0 && expense14 == 0){
+            mType14.setBackgroundResource(R.color.color_def);
+        } else if(goal14 == 0 && expense14 != 0){
+            mType14.setBackgroundResource(R.color.color_over);
+        } else if (expense14 > goal14) {
+            mType14.setBackgroundResource(R.color.color_over);
+        } else if (expense14 == goal14) {
+            mType14.setBackgroundResource(R.color.color_max);
+        }else if (expense14 > goal14 * 0.5 ) {
+            mType14.setBackgroundResource(R.color.color_mid);
+        }else if (expense14 <= goal14 * 0.5) {
+            mType14.setBackgroundResource(R.color.color_min);
+        }
+    }
+
+    public void Datatype1() {
+        mType1 = findViewById(R.id.mType1);
+        itemPrice1 = findViewById(R.id.itemPrice1);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("expenses")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .whereEqualTo("category", "ค่าอาหารและเครื่องดื่ม")
+                .whereEqualTo("month",selectedMonthValue)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense1 += document.getLong("amount");
+                                    String expenseT1 = Long.toString(expense1).trim();
+                                    itemPrice1.setText(expenseT1);
+                                    System.out.println("Showdata"+expenseT1);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense1 = 0;
+                                String expenseT1 = Long.toString(expense1).trim();
+                                itemPrice1.setText(expenseT1);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        db.collection("Goal")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                goal1 += document.getLong("type1");
+                                System.out.println("goal: " + document);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                        setUpGraph();
+                    }
+
+                });
+    }
 
     public void Datatype2() {
         mType2 = findViewById(R.id.mType2);
@@ -525,7 +716,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category", "ประเภทการโดยสาร")
+                .whereEqualTo("category", "ค่าที่พักอาศัย")
                 .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -578,7 +769,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category", "ประเภทอาหาร")
+                .whereEqualTo("category", "ค่าสาธารณูปโภค")
                 .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -631,7 +822,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category", "ประเภทการออกกำลังกาย")
+                .whereEqualTo("category", "ค่าเดินทาง")
                 .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -684,7 +875,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category", "ประเภทความบันเทิง")
+                .whereEqualTo("category", "ค่าแต่งกาย")
                 .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -737,7 +928,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category", "ประเภทโทรศัพท์มือถือ")
+                .whereEqualTo("category", "ค่าใช้จ่ายในบ้าน")
                 .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -790,7 +981,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category", "ประเภทสังสรรค์")
+                .whereEqualTo("category", "ค่าใช้จ่ายเกี่ยวกับสุขภาพ")
                 .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -843,7 +1034,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category", "ประเภทจิปาถะ")
+                .whereEqualTo("category", "ค่าสันทนาการและสังคม")
                 .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -896,7 +1087,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         db.collection("expenses")
                 .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
-                .whereEqualTo("category", "อื่นๆ...")
+                .whereEqualTo("category", "ค่าของขวัญและการกุศล")
                 .whereEqualTo("month",selectedMonthValue)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -935,6 +1126,281 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                                 System.out.println("goal: " + document);
                             }
                             } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                        setUpGraph();
+                    }
+                });
+
+
+    }
+
+    public void Datatype10() {
+        mType10 = findViewById(R.id.mType10);
+        itemPrice10 = findViewById(R.id.itemPrice10);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("expenses")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .whereEqualTo("category", "ค่าใช้จ่ายทางการศึกษา")
+                .whereEqualTo("month",selectedMonthValue)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense10 += document.getLong("amount");
+                                    String expenseT10 = Long.toString(expense10).trim();
+                                    itemPrice10.setText(expenseT10);
+                                    System.out.println("Showdata"+expenseT10);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense10 = 0;
+                                String expenseT10 = Long.toString(expense10).trim();
+                                itemPrice10.setText(expenseT10);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        db.collection("Goal")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                goal10 += document.getLong("type10");
+                                System.out.println("goal: " + document);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                        setUpGraph();
+                    }
+                });
+
+
+    }
+
+    public void Datatype11() {
+        mType11 = findViewById(R.id.mType11);
+        itemPrice11 = findViewById(R.id.itemPrice11);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("expenses")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .whereEqualTo("category", "ค่าใช้จ่ายเกี่ยวกับพาหนะ")
+                .whereEqualTo("month",selectedMonthValue)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense11 += document.getLong("amount");
+                                    String expenseT11 = Long.toString(expense11).trim();
+                                    itemPrice11.setText(expenseT11);
+                                    System.out.println("Showdata"+expenseT11);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense11 = 0;
+                                String expenseT11 = Long.toString(expense11).trim();
+                                itemPrice11.setText(expenseT11);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        db.collection("Goal")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                goal11 += document.getLong("type11");
+                                System.out.println("goal: " + document);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                        setUpGraph();
+                    }
+                });
+
+
+    }
+
+    public void Datatype12() {
+        mType12 = findViewById(R.id.mType12);
+        itemPrice12 = findViewById(R.id.itemPrice12);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("expenses")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .whereEqualTo("category", "ค่าใช้จ่ายเกี่ยวกับธนาคาร")
+                .whereEqualTo("month",selectedMonthValue)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense12 += document.getLong("amount");
+                                    String expenseT12 = Long.toString(expense12).trim();
+                                    itemPrice12.setText(expenseT12);
+                                    System.out.println("Showdata"+expenseT12);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense12 = 0;
+                                String expenseT12 = Long.toString(expense12).trim();
+                                itemPrice12.setText(expenseT12);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        db.collection("Goal")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                goal9 += document.getLong("type12");
+                                System.out.println("goal: " + document);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                        setUpGraph();
+                    }
+                });
+
+
+    }
+
+    public void Datatype13() {
+        mType13 = findViewById(R.id.mType13);
+        itemPrice13 = findViewById(R.id.itemPrice13);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("expenses")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .whereEqualTo("category", "ค่าใช้จ่ายเบ็ดเตล็ด")
+                .whereEqualTo("month",selectedMonthValue)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense13 += document.getLong("amount");
+                                    String expenseT13 = Long.toString(expense13).trim();
+                                    itemPrice13.setText(expenseT13);
+                                    System.out.println("Showdata"+expenseT13);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense13 = 0;
+                                String expenseT13 = Long.toString(expense13).trim();
+                                itemPrice13.setText(expenseT13);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        db.collection("Goal")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                goal13 += document.getLong("type13");
+                                System.out.println("goal: " + document);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                        setUpGraph();
+                    }
+                });
+
+
+    }
+
+    public void Datatype14() {
+        mType14 = findViewById(R.id.mType14);
+        itemPrice14 = findViewById(R.id.itemPrice14);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("expenses")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .whereEqualTo("category", "อื่นๆ")
+                .whereEqualTo("month",selectedMonthValue)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    expense14 += document.getLong("amount");
+                                    String expenseT14 = Long.toString(expense14).trim();
+                                    itemPrice14.setText(expenseT14);
+                                    System.out.println("Showdata"+expenseT14);
+                                }
+                                setUpGraph();
+                            } else {
+                                expense14 = 0;
+                                String expenseT14 = Long.toString(expense14).trim();
+                                itemPrice14.setText(expenseT14);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        db.collection("Goal")
+                .whereEqualTo("uid", FirebaseAuth.getInstance().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                goal14 += document.getLong("type14");
+                                System.out.println("goal: " + document);
+                            }
+                        } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                         setUpGraph();

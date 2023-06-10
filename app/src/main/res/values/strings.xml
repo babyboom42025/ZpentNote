@@ -4,15 +4,20 @@
 
     <string-array name="items">
         <item>...</item>
-        <item>ประเภทหนังสือ</item>
-        <item>ประเภทการโดยสาร</item>
-        <item>ประเภทอาหาร</item>
-        <item>ประเภทการออกกำลังกาย</item>
-        <item>ประเภทความบันเทิง</item>
-        <item>ประเภทโทรศัพท์มือถือ</item>
-        <item>ประเภทสังสรรค์</item>
-        <item>ประเภทจิปาถะ</item>
-        <item>อื่นๆ...</item>
+        <item>ค่าอาหารและเครื่องดื่ม</item>
+        <item>ค่าที่พักอาศัย</item>
+        <item>ค่าสาธารณูปโภค</item>
+        <item>ค่าเดินทาง</item>
+        <item>ค่าแต่งกาย</item>
+        <item>ค่าใช้จ่ายในบ้าน</item>
+        <item>ค่าใช้จ่ายเกี่ยวกับสุขภาพ</item>
+        <item>ค่าสันทนาการและสังคม</item>
+        <item>ค่าของขวัญและการกุศล</item>
+        <item>ค่าใช้จ่ายทางการศึกษา</item>
+        <item>ค่าใช้จ่ายเกี่ยวกับพาหนะ</item>
+        <item>ค่าใช้จ่ายเกี่ยวกับธนาคาร</item>
+        <item>ค่าใช้จ่ายเบ็ดเตล็ด</item>
+        <item>อื่นๆ</item>
     </string-array>
 
     <string-array name="Month">

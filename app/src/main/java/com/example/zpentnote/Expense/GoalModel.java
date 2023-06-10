@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class GoalModel implements Serializable {
 
-    private Long type1,type2,type3,type4,type5,type6,type7,type8,type9;
+    private Long type1,type2,type3,type4,type5,type6,type7,type8,type9,type10,type11,type12,type13,type14;
     private String gid;
     private String uid;
-    public GoalModel(Long type1, Long type2, Long type3, Long type4, Long type5, Long type6, Long type7, Long type8, Long type9, String uid,String gid) {
+    public GoalModel(Long type1, Long type2, Long type3, Long type4, Long type5, Long type6, Long type7, Long type8, Long type9,Long type10,Long type11,Long type12,Long type13,Long type14, String uid,String gid) {
         this.type1 = type1;
         this.type2 = type2;
         this.type3 = type3;
@@ -17,8 +17,53 @@ public class GoalModel implements Serializable {
         this.type7 = type7;
         this.type8 = type8;
         this.type9 = type9;
+        this.type10 = type10;
+        this.type11 = type11;
+        this.type12 = type12;
+        this.type13 = type13;
+        this.type14 = type14;
         this.gid = gid;
         this.uid = uid;
+    }
+
+    public Long getType10() {
+        return type10;
+    }
+
+    public void setType10(Long type10) {
+        this.type10 = type10;
+    }
+
+    public Long getType11() {
+        return type11;
+    }
+
+    public void setType11(Long type11) {
+        this.type11 = type11;
+    }
+
+    public Long getType12() {
+        return type12;
+    }
+
+    public void setType12(Long type12) {
+        this.type12 = type12;
+    }
+
+    public Long getType13() {
+        return type13;
+    }
+
+    public void setType13(Long type13) {
+        this.type13 = type13;
+    }
+
+    public Long getType14() {
+        return type14;
+    }
+
+    public void setType14(Long type14) {
+        this.type14 = type14;
     }
 
     public String getUid() {

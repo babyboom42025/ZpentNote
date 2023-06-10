@@ -36,7 +36,7 @@
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
                 android:text="0"
-                android:hint="ประเภทหนังสือ"
+                android:hint="ค่าอาหารและเครื่องดื่ม"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
-                android:hint="ประเภทการโดยสาร"
+                android:hint="ค่าที่พักอาศัย"
                 android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
                 android:background="#30ffffff"
-                android:hint="ประเภทอาหาร"
+                android:hint="ค่าสาธารณูปโภค"
                 android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
-                android:hint="ประเภทการออกกำลังกาย"
+                android:hint="ค่าเดินทาง"
                 android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
-                android:hint="ประเภทความบันเทิง"
+                android:hint="ค่าแต่งกาย"
                 android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
-                android:hint="ประเภทการโทรศัพท์มือถือ"
+                android:hint="ค่าใช้จ่ายในบ้าน"
                 android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -191,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
-                android:hint="ประเภทสังสรรค์"
+                android:hint="ค่าใช้จ่ายเกี่ยวกับสุขภาพ"
                 android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
-                android:hint="ประเภทจิปาถะ"
+                android:hint="ค่าสันทนาการและสังคม"
                 android:text="0"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -243,11 +243,145 @@
                 android:layout_height="wrap_content"
                 android:background="#30ffffff"
                 android:textColorHint="@color/black"
+                android:hint="ค่าของขวัญและการกุศล"
+                android:text="0"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/type10Layout"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
+            app:boxStrokeColor="@color/color6"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@id/type9Layout"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/type10"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#30ffffff"
+                android:textColorHint="@color/black"
+                android:hint="ค่าใช้จ่ายทางการศึกษา"
+                android:text="0"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/type11Layout"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
+            app:boxStrokeColor="@color/color6"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@id/type10Layout"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/type11"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#30ffffff"
+                android:textColorHint="@color/black"
+                android:hint="ค่าใช้จ่ายเกี่ยวกับพาหนะ"
+                android:text="0"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/type12Layout"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
+            app:boxStrokeColor="@color/color6"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@id/type11Layout"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/type12"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#30ffffff"
+                android:textColorHint="@color/black"
+                android:hint="ค่าใช้จ่ายเกี่ยวกับธนาคาร"
+                android:text="0"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/type13Layout"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
+            app:boxStrokeColor="@color/color6"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@id/type12Layout"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/type13"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#30ffffff"
+                android:textColorHint="@color/black"
+                android:hint="ค่าใช้จ่ายเบ็ดเตล็ด"
+                android:text="0"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/type14Layout"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
+            app:boxStrokeColor="@color/color6"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toBottomOf="@id/type13Layout"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/type14"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#30ffffff"
+                android:textColorHint="@color/black"
                 android:hint="อื่นๆ"
                 android:text="0"
                 android:inputType="number" />
 
-            <!--กดเพื่อไปยังหน้าMainActivity-->
             <Button
                 android:id="@+id/submit"
                 android:layout_margin="30dp"
@@ -255,7 +389,10 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/color7"
                 android:text="Submit" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <TextView
 
@@ -267,8 +404,7 @@
             app:layout_constraintBottom_toTopOf="@+id/type1Layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.493" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 
